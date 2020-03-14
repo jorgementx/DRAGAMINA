@@ -1,6 +1,6 @@
 package packDragamina;
 
-public class Dragamina {//singleton
+public class Dragamina {
 	
 	private static Dragamina nDragamina=null;
 	
