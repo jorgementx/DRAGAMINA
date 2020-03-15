@@ -1,6 +1,8 @@
 package packDragamina;
 
-public abstract class Gelaxka {
+import javax.swing.JButton;
+
+public abstract class Gelaxka extends JButton {
 
 	protected boolean klikatuta;
 	protected boolean bandera;
