@@ -68,7 +68,7 @@ public class Dragamina extends JFrame {
 				else if (this.nireTaula.getGelaxka(i, j) instanceof Hutsik) {
 					pGelaxka=new Hutsik();
 				}
-				pGelaxka.setIcon(new ImageIcon(this.getClass().getResource("c0.gif")));
+				pGelaxka.setIcon(new ImageIcon(this.getClass().getResource("tablero.gif")));
 				this.getPanelGelaxkak().add(pGelaxka);
 				this.getPanelGelaxkak().add(pGelaxka, new GridBagConstraints(i,j,1,1,0.0,0.0,GridBagConstraints.CENTER,GridBagConstraints.NONE,new Insets(0, 0, 0, 0),0,0));
 			}
