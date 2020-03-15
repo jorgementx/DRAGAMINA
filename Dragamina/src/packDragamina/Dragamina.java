@@ -1,11 +1,14 @@
 package packDragamina;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
@@ -59,20 +62,25 @@ public class Dragamina extends JFrame {
 	
 	private void gelaxkenMatrizeaHasieratu() {
 		this.nireTaula.taulaHasieratu();
-		Gelaxka pGelaxka=null;
+		JLabel pGelaxka=null;
 		for (int i=0;i<this.errenk;i++) {
 			for (int j=0;j<this.zutab;j++) {
-				if (this.nireTaula.getGelaxka(i, j) instanceof Mina) {
-					pGelaxka=new Mina();
-				}
-				else if (this.nireTaula.getGelaxka(i, j) instanceof Hutsik) {
-					pGelaxka=new Hutsik();
-				}
-				pGelaxka.setIcon(new ImageIcon(this.getClass().getResource("tablero.gif")));
+				pGelaxka=this.gelaxkaSortu();
 				this.getPanelGelaxkak().add(pGelaxka);
 				this.getPanelGelaxkak().add(pGelaxka, new GridBagConstraints(i,j,1,1,0.0,0.0,GridBagConstraints.CENTER,GridBagConstraints.NONE,new Insets(0, 0, 0, 0),0,0));
 			}
 		}
+	}
+	
+	private JLabel gelaxkaSortu() {
+		JLabel label=new JLabel();
+		label.setBorder(BorderFactory.createLoweredBevelBorder());
+		label.setIcon(new ImageIcon(this.getClass().getResource("tablero.gif")));
+		label.setMaximumSize(new Dimension(20, 20));
+		label.setMinimumSize(new Dimension(18, 18));
+		label.setSize(18, 18);
+		//Listenerra gehitzea falta da
+		return label;
 	}
 	
 	private JPanel getPanelGelaxkak() {
