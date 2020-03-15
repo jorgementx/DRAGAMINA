@@ -53,6 +53,8 @@ public class Taula {
 	
 	public void irekiGelaxka(int x, int y){ //gelaxka hutsa bada errekurtsiboki ingurukoak ireki alboan mina bat hegon arte
 		
+		//minaren kasua gehitu daiteke
+		
 		if (y>=this.getErrenk() || x>=this.getZutab() || x<=0 || y<=0 || this.gelaxkaMatrizea[x][y].getKlikatuta()){
 			return; //atera gelaxka ez bada existitzen edo clickatuta badago (return ez da beharrezkoa)
 		}
