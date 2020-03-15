@@ -8,6 +8,7 @@ public abstract class Gelaxka extends JButton {
 	protected boolean bandera;
 	
 	public Gelaxka() {
+		super();
 		this.klikatuta=false;
 		this.bandera=false;
 	}
