@@ -47,7 +47,7 @@ public class Taula {
 		return this.gelaxkaMatrizea[0].length;
 	}
 	
-	public Gelaxka getGelaxka(int pZutab, int pErrenk) {
-		return this.gelaxkaMatrizea[pZutab][pErrenk];
+	public Gelaxka getGelaxka(int pErrenk, int pZutab) {
+		return this.gelaxkaMatrizea[pErrenk][pZutab];
 	}
 }

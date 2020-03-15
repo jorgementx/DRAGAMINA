@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -21,6 +22,10 @@ public class Dragamina extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+
+	/**
+	 * Create the frame.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -33,16 +38,14 @@ public class Dragamina extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public Dragamina() {
 		this.nireTaula=new Taula(2);
 		this.zutab=this.nireTaula.getZutab();
 		this.errenk=this.nireTaula.getErrenk();
 		initialize();
 	}
+	
 	private void initialize() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -65,15 +68,18 @@ public class Dragamina extends JFrame {
 				else if (this.nireTaula.getGelaxka(i, j) instanceof Hutsik) {
 					pGelaxka=new Hutsik();
 				}
+				pGelaxka.setIcon(new ImageIcon(this.getClass().getResource("c0.gif")));
 				this.getPanelGelaxkak().add(pGelaxka);
 				this.getPanelGelaxkak().add(pGelaxka, new GridBagConstraints(i,j,1,1,0.0,0.0,GridBagConstraints.CENTER,GridBagConstraints.NONE,new Insets(0, 0, 0, 0),0,0));
 			}
 		}
 	}
+	
 	private JPanel getPanelGelaxkak() {
 		if (panelGelaxkak == null) {
 			panelGelaxkak = new JPanel();
-			panelGelaxkak.setLayout(new GridBagLayout());
+			GridBagLayout gbl_panelGelaxkak = new GridBagLayout();
+			panelGelaxkak.setLayout(gbl_panelGelaxkak);
 		}
 		return panelGelaxkak;
 	}
