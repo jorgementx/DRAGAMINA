@@ -13,4 +13,8 @@ public class Hutsik extends Gelaxka {
 		
 		//TODO
 	}
+	
+	public int getMinak(){
+		return this.zenbatInguruan;
+	}
 }

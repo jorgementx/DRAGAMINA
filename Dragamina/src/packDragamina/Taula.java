@@ -50,4 +50,27 @@ public class Taula {
 	public Gelaxka getGelaxka(int pErrenk, int pZutab) {
 		return this.gelaxkaMatrizea[pErrenk][pZutab];
 	}
+	
+	public void irekiGelaxka(int x, int y){
+		if (y>=this.getErrenk() || x>=this.getZutab() || x<=0 || y<=0 || this.gelaxkaMatrizea[x][y].getKlikatuta()){
+			return; //atera gelaxka ez bada existitzen edo clickatuta badago (return ez da beharrezkoa)
+		}
+		else {
+			
+			((Hutsik)this.gelaxkaMatrizea[x][y]).klikatu(); //zenbakia edo gelaxka hutsa baldin bada klikatu
+			
+			if(((Hutsik)this.gelaxkaMatrizea[x][y]).getMinak()==0){ //hutsa bada albokoen irekiGelaxka (bonba izatera ez gara inoiz helduko lehenik eta behin zenbakia topatuko genukeelako)
+				irekiGelaxka(x++,y);		//eskuina
+				irekiGelaxka(x--,y);		//ezkerra
+				irekiGelaxka(x,y++);		//behekoa
+				irekiGelaxka(x,y--);		//goikoa
+				irekiGelaxka(x++,y++);		//diagonalki behe-eskuin
+				irekiGelaxka(x--,y--);		//diagonalki goi-ezker
+				irekiGelaxka(x--,y++);		//diagonalki behe-ezker
+				irekiGelaxka(x++,y--);		//diagonalki goi-eskuin
+			}
+		}
+		
+	}
+	
 }

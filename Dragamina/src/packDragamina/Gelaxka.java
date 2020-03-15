@@ -16,4 +16,8 @@ public abstract class Gelaxka extends JButton {
 	public void klikatu() {
 		this.klikatuta=true;
 	}
+	
+	public boolean getKlikatuta(){
+		return this.klikatuta;
+	}
 }
