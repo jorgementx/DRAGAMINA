@@ -1,5 +1,7 @@
 package packDragamina;
 
+// clase Taula
+
 public class Taula {
 	
 	private Gelaxka[][] gelaxkaMatrizea;
