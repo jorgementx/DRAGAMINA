@@ -53,7 +53,7 @@ public class Taula {
 		return this.gelaxkaMatrizea[pErrenk][pZutab];
 	}
 	
-	public void irekiGelaxka(int x, int y){ //gelaxka hutsa bada errekurtsiboki ingurukoak ireki alboan mina bat hegon arte
+	public void irekiGelaxka(int x, int y){ //gelaxka hutsa bada errekurtsiboki ingurukoak ireki alboan mina bat egon arte
 		
 		//minaren kasua gehitu daiteke
 		
