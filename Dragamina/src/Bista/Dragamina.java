@@ -1,4 +1,4 @@
-package packDragamina;
+package Bista;
 
 // Dragamina
 
@@ -13,10 +13,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Eredua.DragaminaKudeatzailea;
+import Eredua.Taula;
+
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Dragamina extends JFrame {
+public class Dragamina extends JFrame  implements Observer {
 
 	private Taula nireTaula;
 	private int zutab;
@@ -92,5 +98,11 @@ public class Dragamina extends JFrame {
 			panelGelaxkak.setLayout(gbl_panelGelaxkak);
 		}
 		return panelGelaxkak;
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		DragaminaKudeatzailea dk = DragaminaKudeatzailea.getDragaminaKudeatzailea();
+		
 	}
 }

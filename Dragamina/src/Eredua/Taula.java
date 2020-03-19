@@ -1,4 +1,4 @@
-package packDragamina;
+package Eredua;
 
 // clase Taula
 
