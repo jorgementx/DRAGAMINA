@@ -102,7 +102,7 @@ public class Taula {
 	}
 	
 	public void irekiGelaxka(int x, int y) { //gelaxka hutsa bada errekurtsiboki ingurukoak ireki alboan mina bat egon arte
-		System.out.println(this.gelaxkaMatrizea[x][y].getMota());
+		//System.out.println(this.gelaxkaMatrizea[x][y].getMota()); Ni caso a esto, es para las pruebas
 		if (x>=this.getErrenk() || y>=this.getZutab() || x<=0 || y<=0 || this.gelaxkaMatrizea[x][y].getKlikatuta()){
 			return; //atera gelaxka ez bada existitzen edo clickatuta badago (return ez da beharrezkoa)
 		}
