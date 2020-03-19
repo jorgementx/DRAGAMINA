@@ -1,16 +1,15 @@
 package Eredua;
 
-import javax.swing.JButton;
+public class Gelaxka {
 
-public abstract class Gelaxka extends JButton {
-
-	protected boolean klikatuta;
-	protected boolean bandera;
+	private boolean klikatuta;
+	private boolean bandera;
+	private int mota;
 	
 	public Gelaxka() {
-		super();
 		this.klikatuta=false;
 		this.bandera=false;
+		this.mota=0;
 	}
 	
 	public void klikatu() {
@@ -19,5 +18,17 @@ public abstract class Gelaxka extends JButton {
 	
 	public boolean getKlikatuta(){
 		return this.klikatuta;
+	}
+	
+	public void setMota(int pMota) {
+		this.mota=pMota;
+	}
+	
+	public int getMota() {
+		return this.mota;
+	}
+	
+	public void inkMota() {
+		this.mota++;
 	}
 }

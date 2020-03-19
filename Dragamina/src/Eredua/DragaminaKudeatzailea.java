@@ -2,9 +2,12 @@ package Eredua;
 
 import java.util.Observable;
 
-import Eredua.DragaminaKudeatzailea;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
-public class DragaminaKudeatzailea extends Observable {
+import Bista.Dragamina;
+
+public class DragaminaKudeatzailea extends Observable{
 	
 	private static DragaminaKudeatzailea nDragaminaKudeatzailea = new DragaminaKudeatzailea();
 	
@@ -15,5 +18,4 @@ public class DragaminaKudeatzailea extends Observable {
 	public static DragaminaKudeatzailea getDragaminaKudeatzailea() {
 		return nDragaminaKudeatzailea;
 	}
-
 }
