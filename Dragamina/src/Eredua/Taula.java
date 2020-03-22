@@ -7,6 +7,7 @@ import Bista.Dragamina;
 public class Taula {
 	
 	private Gelaxka[][] gelaxkaMatrizea;
+	private boolean minakJarrita;
 	private int minaKop;
 	
 	public Taula(int zailtasuna) {
@@ -19,6 +20,7 @@ public class Taula {
 		else if (zailtasuna==3) {
 			this.gelaxkaMatrizea=new Gelaxka[12][25];
 		}
+		this.minakJarrita=false;
 		this.minaKop=this.gelaxkaMatrizea.length*zailtasuna;
 	}
 
@@ -28,18 +30,22 @@ public class Taula {
 				this.gelaxkaMatrizea[x][y]=new Gelaxka();
 			}
 		}
+	}
+	
+	public void hasieratuMinak(int x, int y) {
 		int jartzekoFalta=this.minaKop;
 		int randomZut=0;
 		int randomErrenk=0;
 		while (jartzekoFalta>0) {
 			randomZut=(int)(Math.random()*this.gelaxkaMatrizea.length);
 			randomErrenk=(int)(Math.random()*this.gelaxkaMatrizea[0].length);
-			if (this.gelaxkaMatrizea[randomZut][randomErrenk].getMota()!=9) {
-				this.gelaxkaMatrizea[randomZut][randomErrenk].setMota(9);;
+			if (this.gelaxkaMatrizea[randomZut][randomErrenk].getMota()!=9 && randomZut!=x && randomErrenk!=y) {
+				this.gelaxkaMatrizea[randomZut][randomErrenk].setMota(9);
 				jartzekoFalta--;
 			}
 		}
 		this.minaKopJarriGelaxketan();
+		this.minakJarrita=true;
 	}
 	
 	private void minaKopJarriGelaxketan() {
@@ -104,6 +110,9 @@ public class Taula {
 	}
 	
 	public void irekiGelaxka(int x, int y) { //gelaxka hutsa bada errekurtsiboki ingurukoak ireki alboan mina bat egon arte
+		if (!this.minakJarrita) {
+			this.hasieratuMinak(x, y);
+		}
 		if (x>=this.getZutab() || y>=this.getErrenk() || x<0 || y<0) {}
 		else {
 			if (this.gelaxkaMatrizea[x][y].getKlikatuta()) {}
@@ -127,7 +136,6 @@ public class Taula {
 				}
 			}
 		}
-		
 	}
 
 	public void irekiGuztiak(int x, int y) { //ireki gelaxka guztiak klikatu dena izan ezik (mina delako)
