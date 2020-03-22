@@ -65,8 +65,8 @@ public class Dragamina extends JFrame implements Observer{
 		//TODO
 	}
 	
-	private void partidaGaldu(int i, int j) {
-		Dragamina.getDragamina().nireTaula.irekiGuztiak(i, j);
+	private void partidaGaldu(int x, int y) {
+		Dragamina.getDragamina().nireTaula.irekiGuztiak(x, y);
 		//TODO
 	}
 	
@@ -109,7 +109,7 @@ public class Dragamina extends JFrame implements Observer{
 	
 	public JLabel[][] getListaGelaxkak() {
 		if (listaGelaxkak == null) {
-			listaGelaxkak = new JLabel[this.errenk][this.zutab];
+			listaGelaxkak = new JLabel[this.zutab][this.errenk];
 		}
 		return listaGelaxkak;
 	}
@@ -136,16 +136,16 @@ public class Dragamina extends JFrame implements Observer{
 			this.zutab = 10;
 			this.errenk = 15;
 		}
-		for (int i=0;i<this.errenk;i++) {
-			for (int j=0;j<this.zutab;j++) {
-				pGelaxka=this.gelaxkaSortu(i, j);
-				this.getListaGelaxkak()[i][j] = pGelaxka;
-				this.getPnlMatrizea().add(pGelaxka, new GridBagConstraints(j,i,1,1,0.0,0.0,GridBagConstraints.CENTER,GridBagConstraints.NONE,new Insets(0, 0, 0, 0),0,0));
+		for (int x=0;x<this.zutab;x++) {
+			for (int y=0;y<this.errenk;y++) {
+				pGelaxka=this.gelaxkaSortu();
+				this.getListaGelaxkak()[x][y] = pGelaxka;
+				this.getPnlMatrizea().add(pGelaxka, new GridBagConstraints(x,y,1,1,0.0,0.0,GridBagConstraints.CENTER,GridBagConstraints.NONE,new Insets(0, 0, 0, 0),0,0));
 			}
 		}
 	}
 	
-	private JLabel gelaxkaSortu(int i, int j) {
+	private JLabel gelaxkaSortu() {
 		JLabel label = new JLabel();
 		label.setBorder(BorderFactory.createLoweredBevelBorder());
 		label.setIcon(new ImageIcon(this.getClass().getResource("tablero.gif")));
@@ -169,26 +169,26 @@ public class Dragamina extends JFrame implements Observer{
 		public void mouseClicked(MouseEvent e) {
 			if ((e.getModifiers() & InputEvent.BUTTON1_MASK) != 0) {
 				boolean aurk = false;
-				int i = 0;
-				int j = 0;
-				while (!aurk && i<Dragamina.getDragamina().getListaGelaxkak().length) {
-					while (!aurk && j<Dragamina.getDragamina().getListaGelaxkak()[0].length) {
-						if (Dragamina.getDragamina().getListaGelaxkak()[i][j].equals((JLabel)e.getSource())) {
+				int x = 0;
+				int y = 0;
+				while (!aurk && x<Dragamina.getDragamina().getListaGelaxkak().length) {
+					while (!aurk && y<Dragamina.getDragamina().getListaGelaxkak()[0].length) {
+						if (Dragamina.getDragamina().getListaGelaxkak()[x][y].equals((JLabel)e.getSource())) {
 							aurk = true;
 						}
 						else {
-							j++;
+							y++;
 						}
 					}
 					if (!aurk) {
-						j = 0;
-						i++;
+						y = 0;
+						x++;
 					}
 				}
 				if (aurk) {
-					Dragamina.getDragamina().nireTaula.irekiGelaxka(i, j);
-					if (Dragamina.getDragamina().nireTaula.getGelaxka(j, i).getMota()==9) {
-						Dragamina.getDragamina().partidaGaldu(i, j);
+					Dragamina.getDragamina().nireTaula.irekiGelaxka(x, y);
+					if (Dragamina.getDragamina().nireTaula.getGelaxka(x, y).getMota()==9) {
+						Dragamina.getDragamina().partidaGaldu(x, y);
 					}
 					else {
 						Dragamina.getDragamina().kudeatuAmaiera();
