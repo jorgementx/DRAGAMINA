@@ -206,6 +206,9 @@ public class Taula {
 			for (int errenkada=0; errenkada < gelaxkaMatrizea[0].length; errenkada++){
 				if (!gelaxkaMatrizea[zutabe][errenkada].getKlikatuta() && !gelaxkaMatrizea[zutabe][errenkada].getBandera()){
 					gelaxkaMatrizea[zutabe][errenkada].setBandera();
+					this.banderaKop--;
+					Dragamina.getDragamina().eguneratuBanderaKont();
+					Dragamina.getDragamina().getListaGelaxkak()[zutabe][errenkada].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("bandera.gif")));
 				}
 			}
 		}
