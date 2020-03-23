@@ -38,6 +38,7 @@ public class Dragamina extends JFrame implements Observer{
 	private JPanel pnlMatrizea;
 	private JPanel panelMenu;
 	private JPanel panelKontagailu;
+	private JButton jokatuBotoia;
 	private JLabel[][] listaGelaxkak;
 	private Taula nireTaula;
 	private int zailtasuna = 2;
@@ -73,12 +74,14 @@ public class Dragamina extends JFrame implements Observer{
 	private void partidaIrabazi() {
 		if(Dragamina.getDragamina().nireTaula.irabaziKonprobaketa()){
 			Dragamina.getDragamina().nireTaula.banderaGuztiakJarri();
+			jokatuBotoia.setIcon(new ImageIcon(this.getClass().getResource("cara3.gif")));
 		}
 		//TODO
 	}
 	
 	private void partidaGaldu() {
 		Dragamina.getDragamina().nireTaula.irekiGuztiak();
+		jokatuBotoia.setIcon(new ImageIcon(this.getClass().getResource("cara2.gif")));
 		//TODO
 	}
 	
@@ -116,8 +119,9 @@ public class Dragamina extends JFrame implements Observer{
 			panelMenu = new JPanel();
 			FlowLayout menuBotoiak = new FlowLayout();
 			panelMenu.setLayout(menuBotoiak);
-			JButton jokatuBotoia = new JButton("Jokatu");
-			panelMenu.add(jokatuBotoia);
+			jokatuBotoia = new JButton();
+			jokatuBotoia.setIcon(new ImageIcon(this.getClass().getResource("cara1.gif")));
+			panelMenu.add(jokatuBotoia);	
 			JButton laguntzaBotoia = new JButton("Laguntza");
 			panelMenu.add(laguntzaBotoia);
 		}
