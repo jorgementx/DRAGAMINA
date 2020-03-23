@@ -1,6 +1,7 @@
 package Eredua;
 
 import javax.swing.ImageIcon;
+import javax.swing.plaf.basic.BasicTreeUI.SelectionModelPropertyChangeHandler;
 
 import Bista.Dragamina;
 
@@ -161,13 +162,23 @@ public class Taula {
 	}
 
 	public void irekiGuztiak(int x, int y) { //ireki gelaxka guztiak klikatu dena izan ezik (mina delako)
-		//TODO
+		
+		int i=0;
+		int j=0;
 		for (Gelaxka[] errenkada : gelaxkaMatrizea){
 			for (Gelaxka g : errenkada){
 				if (!g.getKlikatuta()){
-					g.klikatu();					
+					g.klikatu();
+					if(this.gelaxkaMatrizea[x][y].getMota()!=9){
+						Dragamina.getDragamina().getListaGelaxkak()[i][j].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("c"+this.gelaxkaMatrizea[x][y].getMota()+".gif")));
+					}
+					else{
+						Dragamina.getDragamina().getListaGelaxkak()[i][j].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("mina-n.gif")));
+					}
 				}
+				i++;
 			}
+			j++;
 		}
 	}
 }
