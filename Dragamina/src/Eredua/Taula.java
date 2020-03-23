@@ -162,5 +162,12 @@ public class Taula {
 
 	public void irekiGuztiak(int x, int y) { //ireki gelaxka guztiak klikatu dena izan ezik (mina delako)
 		//TODO
+		for (Gelaxka[] errenkada : gelaxkaMatrizea){
+			for (Gelaxka g : errenkada){
+				if (!g.getKlikatuta()){
+					g.klikatu();					
+				}
+			}
+		}
 	}
 }
