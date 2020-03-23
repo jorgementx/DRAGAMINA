@@ -161,7 +161,7 @@ public class Taula {
 		}
 	}
 
-	public void irekiGuztiak(int x, int y) { //ireki gelaxka guztiak klikatu dena izan ezik (mina delako)
+	public void irekiGuztiak() { //ireki gelaxka guztiak klikatu dena izan ezik (mina delako)
 
 		for (int zutabe=0; zutabe < gelaxkaMatrizea.length; zutabe++){
 			for (int errenkada=0; errenkada < gelaxkaMatrizea[0].length; errenkada++){

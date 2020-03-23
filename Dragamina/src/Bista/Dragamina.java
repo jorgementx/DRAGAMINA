@@ -69,8 +69,8 @@ public class Dragamina extends JFrame implements Observer{
 		//TODO
 	}
 	
-	private void partidaGaldu(int x, int y) {
-		Dragamina.getDragamina().nireTaula.irekiGuztiak(x, y);
+	private void partidaGaldu() {
+		Dragamina.getDragamina().nireTaula.irekiGuztiak();
 		//TODO
 	}
 	
@@ -192,7 +192,7 @@ public class Dragamina extends JFrame implements Observer{
 				if ((e.getModifiers() & InputEvent.BUTTON1_MASK) != 0) { //Ezkerreko botoia
 					Dragamina.getDragamina().getNireTaula().irekiGelaxka(x, y);
 					if (Dragamina.getDragamina().getNireTaula().getGelaxka(x, y).getMota()==9) {
-						Dragamina.getDragamina().partidaGaldu(x, y);
+						Dragamina.getDragamina().partidaGaldu();
 					}
 					else {
 						Dragamina.getDragamina().kudeatuAmaiera();
