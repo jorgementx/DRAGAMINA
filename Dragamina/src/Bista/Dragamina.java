@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -19,6 +20,7 @@ import java.util.Observer;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,6 +36,7 @@ public class Dragamina extends JFrame implements Observer{
 	private static Dragamina nDragamina = null;
 	private JPanel contentPane;
 	private JPanel pnlMatrizea;
+	private JPanel panelMenu;
 	private JLabel[][] listaGelaxkak;
 	private Taula nireTaula;
 	private int zailtasuna = 2;
@@ -92,9 +95,26 @@ public class Dragamina extends JFrame implements Observer{
 		if (contentPane == null) {
 			contentPane = new JPanel();
 			contentPane.setLayout(new BorderLayout()); //contentPane-aren diseinua (hgap eta vgap gehitu behar izanez gero)
+			contentPane.add(getPanelMenu(), BorderLayout.NORTH);
 			contentPane.add(getPnlMatrizea(), BorderLayout.SOUTH);
 		}
 		return contentPane;
+	}
+	
+	/**
+	 * Menuaren botoien panela
+	 */
+	private JPanel getPanelMenu() {
+		if (panelMenu==null) {
+			panelMenu = new JPanel();
+			FlowLayout menuBotoiak = new FlowLayout();
+			panelMenu.setLayout(menuBotoiak);
+			JButton jokatuBotoia = new JButton("Jokatu");
+			panelMenu.add(jokatuBotoia);
+			JButton laguntzaBotoia = new JButton("Laguntza");
+			panelMenu.add(laguntzaBotoia);
+		}
+		return panelMenu;
 	}
 	
 	/**
