@@ -89,7 +89,7 @@ public class Dragamina extends JFrame implements Observer{
 	 * Leihoaren osagaien hasieraketa
 	 */
 	private void initialize() {
-		this.setSize(300, 375); //Leihoaren tamaina
+		this.setSize(300, 380); //Leihoaren tamaina
 		this.setResizable(false);
 		this.setContentPane(getContentPane()); //Sortu eta finkatu contentPane
 		this.setTitle("Dragamina"); //Leihoaren izena finkatu
