@@ -9,6 +9,7 @@ public class Taula {
 	private Gelaxka[][] gelaxkaMatrizea;
 	private boolean minakJarrita;
 	private int minaKop;
+	private int banderaKop;
 	
 	public Taula(int zailtasuna) {
 		if (zailtasuna==1) {
@@ -22,6 +23,7 @@ public class Taula {
 		}
 		this.minakJarrita=false;
 		this.minaKop=this.gelaxkaMatrizea.length*zailtasuna;
+		this.banderaKop=this.gelaxkaMatrizea.length*zailtasuna;
 	}
 
 	public void taulaHasieratu() {
@@ -115,8 +117,7 @@ public class Taula {
 		}
 		if (x>=this.getZutab() || y>=this.getErrenk() || x<0 || y<0) {}
 		else {
-			if (this.gelaxkaMatrizea[x][y].getKlikatuta()) {}
-			else {
+			if (!this.gelaxkaMatrizea[x][y].getKlikatuta() && !this.gelaxkaMatrizea[x][y].getBandera()) {
 				this.gelaxkaMatrizea[x][y].klikatu(); //zenbakia edo gelaxka hutsa baldin bada klikatu
 				if(this.gelaxkaMatrizea[x][y].getMota()!=9){ //hutsa bada albokoen irekiGelaxka (mina izatera ez gara inoiz helduko lehenik eta behin zenbakia topatuko genukeelako)
 					Dragamina.getDragamina().getListaGelaxkak()[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("c"+this.gelaxkaMatrizea[x][y].getMota()+".gif")));
@@ -134,6 +135,27 @@ public class Taula {
 				else {
 					Dragamina.getDragamina().getListaGelaxkak()[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("mina-r.gif")));
 				}
+			}
+		}
+	}
+	
+	public void eskumakoBotoia(int x, int y) {
+		if (!this.gelaxkaMatrizea[x][y].getKlikatuta()) {
+			if (!this.gelaxkaMatrizea[x][y].getBandera() && !this.gelaxkaMatrizea[x][y].getGalderaMarka()) {
+				this.gelaxkaMatrizea[x][y].setBandera();
+				this.banderaKop--;
+				Dragamina.getDragamina().eguneratuBanderaKont();
+				Dragamina.getDragamina().getListaGelaxkak()[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("bandera.gif")));
+			}
+			else if (this.gelaxkaMatrizea[x][y].getBandera()) {
+				this.gelaxkaMatrizea[x][y].setBandera();
+				this.banderaKop++;
+				this.gelaxkaMatrizea[x][y].setGalderaMarka();
+				Dragamina.getDragamina().getListaGelaxkak()[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("marca.gif")));
+			}
+			else {
+				this.gelaxkaMatrizea[x][y].setGalderaMarka();
+				Dragamina.getDragamina().getListaGelaxkak()[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("tablero.gif")));
 			}
 		}
 	}

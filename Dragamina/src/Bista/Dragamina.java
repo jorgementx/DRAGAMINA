@@ -57,6 +57,10 @@ public class Dragamina extends JFrame implements Observer{
 		return nDragamina;
 	}
 	
+	public void eguneratuBanderaKont() { //Pantailaratutako geratzzen diren bandera kopurua eguneratzeko
+		//TODO
+	}
+	
 	private void kudeatuAmaiera() {
 		//TODO
 	}
@@ -167,36 +171,36 @@ public class Dragamina extends JFrame implements Observer{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			if ((e.getModifiers() & InputEvent.BUTTON1_MASK) != 0) {
-				boolean aurk = false;
-				int x = 0;
-				int y = 0;
-				while (!aurk && x<Dragamina.getDragamina().getListaGelaxkak().length) {
-					while (!aurk && y<Dragamina.getDragamina().getListaGelaxkak()[0].length) {
-						if (Dragamina.getDragamina().getListaGelaxkak()[x][y].equals((JLabel)e.getSource())) {
-							aurk = true;
-						}
-						else {
-							y++;
-						}
+			boolean aurk = false;
+			int x = 0;
+			int y = 0;
+			while (!aurk && x<Dragamina.getDragamina().getListaGelaxkak().length) {
+				while (!aurk && y<Dragamina.getDragamina().getListaGelaxkak()[0].length) {
+					if (Dragamina.getDragamina().getListaGelaxkak()[x][y].equals((JLabel)e.getSource())) {
+						aurk = true;
 					}
-					if (!aurk) {
-						y = 0;
-						x++;
+					else {
+						y++;
 					}
 				}
-				if (aurk) {
-					Dragamina.getDragamina().nireTaula.irekiGelaxka(x, y);
-					if (Dragamina.getDragamina().nireTaula.getGelaxka(x, y).getMota()==9) {
+				if (!aurk) {
+					y = 0;
+					x++;
+				}
+			}
+			if (aurk) {
+				if ((e.getModifiers() & InputEvent.BUTTON1_MASK) != 0) { //Ezkerreko botoia
+					Dragamina.getDragamina().getNireTaula().irekiGelaxka(x, y);
+					if (Dragamina.getDragamina().getNireTaula().getGelaxka(x, y).getMota()==9) {
 						Dragamina.getDragamina().partidaGaldu(x, y);
 					}
 					else {
 						Dragamina.getDragamina().kudeatuAmaiera();
 					}
 				}
-			}
-			else if ((e.getModifiers() & InputEvent.BUTTON3_MASK) != 0) {
-				//TODO
+				else if ((e.getModifiers() & InputEvent.BUTTON3_MASK) != 0) { //Eskumako botoia
+					Dragamina.getDragamina().getNireTaula().eskumakoBotoia(x, y);
+				}
 			}
 		}
 

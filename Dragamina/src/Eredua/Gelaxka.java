@@ -4,6 +4,7 @@ public class Gelaxka {
 
 	private boolean klikatuta;
 	private boolean bandera;
+	private boolean galderaMarka;
 	private int mota;
 	
 	public Gelaxka() {
@@ -18,6 +19,22 @@ public class Gelaxka {
 	
 	public boolean getKlikatuta(){
 		return this.klikatuta;
+	}
+	
+	public boolean getBandera() {
+		return this.bandera;
+	}
+	
+	public void setBandera() {
+		this.bandera=!this.bandera;
+	}
+	
+	public boolean getGalderaMarka() {
+		return this.galderaMarka;
+	}
+	
+	public void setGalderaMarka() {
+		this.galderaMarka=!this.galderaMarka;
 	}
 	
 	public void setMota(int pMota) {
