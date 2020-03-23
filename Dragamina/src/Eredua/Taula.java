@@ -168,7 +168,12 @@ public class Taula {
 				if (!gelaxkaMatrizea[zutabe][errenkada].getKlikatuta()){
 					gelaxkaMatrizea[zutabe][errenkada].klikatu();
 					if(this.gelaxkaMatrizea[zutabe][errenkada].getMota()!=9){
-						Dragamina.getDragamina().getListaGelaxkak()[zutabe][errenkada].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("c"+this.gelaxkaMatrizea[zutabe][errenkada].getMota()+".gif")));
+						if (this.gelaxkaMatrizea[zutabe][errenkada].getBandera()){
+							Dragamina.getDragamina().getListaGelaxkak()[zutabe][errenkada].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("mina-x.gif")));	
+						}
+						else{
+							Dragamina.getDragamina().getListaGelaxkak()[zutabe][errenkada].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("c"+this.gelaxkaMatrizea[zutabe][errenkada].getMota()+".gif")));
+						}
 					}
 					else{
 						Dragamina.getDragamina().getListaGelaxkak()[zutabe][errenkada].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("mina-n.gif")));
