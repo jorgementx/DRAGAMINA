@@ -37,6 +37,7 @@ public class Dragamina extends JFrame implements Observer{
 	private JPanel contentPane;
 	private JPanel pnlMatrizea;
 	private JPanel panelMenu;
+	private JPanel panelKontagailu;
 	private JLabel[][] listaGelaxkak;
 	private Taula nireTaula;
 	private int zailtasuna = 2;
@@ -96,6 +97,7 @@ public class Dragamina extends JFrame implements Observer{
 			contentPane = new JPanel();
 			contentPane.setLayout(new BorderLayout()); //contentPane-aren diseinua (hgap eta vgap gehitu behar izanez gero)
 			contentPane.add(getPanelMenu(), BorderLayout.NORTH);
+			contentPane.add(getPanelKontagailu(), BorderLayout.CENTER);
 			contentPane.add(getPnlMatrizea(), BorderLayout.SOUTH);
 		}
 		return contentPane;
@@ -115,6 +117,22 @@ public class Dragamina extends JFrame implements Observer{
 			panelMenu.add(laguntzaBotoia);
 		}
 		return panelMenu;
+	}
+	
+	/**
+	 * Kontagailuen panela
+	 */
+	private JPanel getPanelKontagailu() {
+		if (panelKontagailu==null) {
+			panelKontagailu = new JPanel();
+			FlowLayout kontagailuLayout = new FlowLayout();
+			panelKontagailu.setLayout(kontagailuLayout);
+			JLabel minaKontagailua = new JLabel("Mina kopurua: ");
+			JLabel denboraKont = new JLabel("Igarotako denbora: ");
+			panelKontagailu.add(minaKontagailua);
+			panelKontagailu.add(denboraKont);
+		}
+		return panelKontagailu;
 	}
 	
 	/**
