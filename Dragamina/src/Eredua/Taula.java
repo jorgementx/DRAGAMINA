@@ -182,4 +182,33 @@ public class Taula {
 			}
 		}
 	}
+	public boolean irabaziKonprobaketa(){	//creo que tendriamos que meter un atributo de las gelaxkas sin clickar para no tener que contar cada vez las gelaxkas sin clickar para comprobar si has ganado
+		//tambien se puede hacer mirandolas todas y si hay alguna sin clickar que no sea mina return false, si no return true
+		
+		boolean irabazita=false;
+		int kont=0;
+		for (int zutabe=0; zutabe < gelaxkaMatrizea.length; zutabe++){
+			for (int errenkada=0; errenkada < gelaxkaMatrizea[0].length; errenkada++){
+				if (!gelaxkaMatrizea[zutabe][errenkada].getKlikatuta()){
+					kont++;
+				}
+			}
+		}
+		if (kont==minaKop){
+			irabazita=true;
+		}
+		return irabazita;
+	}
+	
+	public void banderaGuztiakJarri(){	//estaria bien tener un array con las posiciones de todas las minas para evitar recorrer toda la matriz
+		
+		for (int zutabe=0; zutabe < gelaxkaMatrizea.length; zutabe++){
+			for (int errenkada=0; errenkada < gelaxkaMatrizea[0].length; errenkada++){
+				if (!gelaxkaMatrizea[zutabe][errenkada].getKlikatuta() && !gelaxkaMatrizea[zutabe][errenkada].getBandera()){
+					gelaxkaMatrizea[zutabe][errenkada].setBandera();
+				}
+			}
+		}
+	}
+	
 }

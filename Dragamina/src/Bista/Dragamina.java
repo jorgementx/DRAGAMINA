@@ -66,10 +66,14 @@ public class Dragamina extends JFrame implements Observer{
 	}
 	
 	private void kudeatuAmaiera() {
+		Dragamina.getDragamina().partidaIrabazi();
 		//TODO
 	}
 	
 	private void partidaIrabazi() {
+		if(Dragamina.getDragamina().nireTaula.irabaziKonprobaketa()){
+			Dragamina.getDragamina().nireTaula.banderaGuztiakJarri();
+		}
 		//TODO
 	}
 	
@@ -82,7 +86,7 @@ public class Dragamina extends JFrame implements Observer{
 	 * Leihoaren osagaien hasieraketa
 	 */
 	private void initialize() {
-		this.setSize(300, 350); //Leihoaren tamaina
+		this.setSize(300, 375); //Leihoaren tamaina
 		this.setResizable(false);
 		this.setContentPane(getContentPane()); //Sortu eta finkatu contentPane
 		this.setTitle("Dragamina"); //Leihoaren izena finkatu
