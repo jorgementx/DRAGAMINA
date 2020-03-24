@@ -151,6 +151,7 @@ public class Taula {
 			else if (this.gelaxkaMatrizea[x][y].getBandera()) {
 				this.gelaxkaMatrizea[x][y].setBandera();
 				this.banderaKop++;
+				Dragamina.getDragamina().eguneratuBanderaKont();
 				this.gelaxkaMatrizea[x][y].setGalderaMarka();
 				Dragamina.getDragamina().getListaGelaxkak()[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("marca.gif")));
 			}
@@ -212,6 +213,10 @@ public class Taula {
 				}
 			}
 		}
+	}
+	
+	public void printBanderaKop(){				//momentuzkoa
+		System.out.println(this.banderaKop);		
 	}
 	
 }

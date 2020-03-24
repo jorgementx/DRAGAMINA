@@ -62,7 +62,8 @@ public class Dragamina extends JFrame implements Observer{
 		return nDragamina;
 	}
 	
-	public void eguneratuBanderaKont() { //Pantailaratutako geratzzen diren bandera kopurua eguneratzeko
+	public void eguneratuBanderaKont() { //Pantailaratutako geratzen diren bandera kopurua eguneratzeko
+		Dragamina.getDragamina().nireTaula.printBanderaKop();		//momentuzkoa
 		//TODO
 	}
 	
