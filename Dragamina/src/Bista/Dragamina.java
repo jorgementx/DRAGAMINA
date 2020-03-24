@@ -253,6 +253,8 @@ public class Dragamina extends JFrame implements Observer{
 			}
 			else if(Dragamina.getDragamina().jokatuBotoia.equals((JLabel)e.getSource())){
 				if ((e.getModifiers() & InputEvent.BUTTON1_MASK) != 0) {
+					//setVisible(false); 	//JFrame objektua ikusten utzi
+					dispose(); 				//JFrame objektua suntsitu
 					nDragamina = new Dragamina();
 					//nDragamina = null;
 					//Dragamina.getDragamina();
