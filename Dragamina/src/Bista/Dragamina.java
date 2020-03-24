@@ -38,7 +38,8 @@ public class Dragamina extends JFrame implements Observer{
 	private JPanel pnlMatrizea;
 	private JPanel panelMenu;
 	private JPanel panelKontagailu;
-	private JButton jokatuBotoia;		//atributu moduan jarri metodo guztiek berdina erabili dezaten aurpegia aldatzeko
+	//private JButton jokatuBotoia;		//atributu moduan jarri metodo guztiek berdina erabili dezaten aurpegia aldatzeko
+	private JLabel jokatuBotoia;
 	private JLabel[][] listaGelaxkak;
 	private Taula nireTaula;
 	private int zailtasuna = 2;
@@ -120,9 +121,11 @@ public class Dragamina extends JFrame implements Observer{
 			panelMenu = new JPanel();
 			FlowLayout menuBotoiak = new FlowLayout();
 			panelMenu.setLayout(menuBotoiak);
-			jokatuBotoia = new JButton();
+			//jokatuBotoia = new JButton();
+			jokatuBotoia = new JLabel();
 			jokatuBotoia.setIcon(new ImageIcon(this.getClass().getResource("cara1.gif")));
-			panelMenu.add(jokatuBotoia);	
+			panelMenu.add(jokatuBotoia);
+			jokatuBotoia.addMouseListener(this.getKontrolatzailea());
 		}
 		return panelMenu;
 	}
@@ -246,6 +249,15 @@ public class Dragamina extends JFrame implements Observer{
 				}
 				else if ((e.getModifiers() & InputEvent.BUTTON3_MASK) != 0) { //Eskumako botoia
 					Dragamina.getDragamina().getNireTaula().eskumakoBotoia(x, y);
+				}
+			}
+			else if(Dragamina.getDragamina().jokatuBotoia.equals((JLabel)e.getSource())){
+				if ((e.getModifiers() & InputEvent.BUTTON1_MASK) != 0) {
+					nDragamina = new Dragamina();
+					//nDragamina = null;
+					//Dragamina.getDragamina();
+					//System.out.println("partida berria");
+					//TODO
 				}
 			}
 		}
