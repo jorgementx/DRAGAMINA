@@ -122,8 +122,7 @@ public class Dragamina extends JFrame implements Observer{
 			jokatuBotoia = new JButton();
 			jokatuBotoia.setIcon(new ImageIcon(this.getClass().getResource("cara1.gif")));
 			panelMenu.add(jokatuBotoia);	
-			JButton laguntzaBotoia = new JButton("Laguntza");
-			panelMenu.add(laguntzaBotoia);
+			
 		}
 		return panelMenu;
 	}
