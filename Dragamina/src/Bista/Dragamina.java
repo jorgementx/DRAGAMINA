@@ -240,7 +240,7 @@ public class Dragamina extends JFrame implements Observer{
 			if (aurk) {
 				if ((e.getModifiers() & InputEvent.BUTTON1_MASK) != 0) { //Ezkerreko botoia
 					Dragamina.getDragamina().getNireTaula().irekiGelaxka(x, y);
-					if (Dragamina.getDragamina().getNireTaula().getGelaxka(x, y).getMota()==9) {
+					if (Dragamina.getDragamina().getNireTaula().getGelaxka(x, y).getMota()==9 && !Dragamina.getDragamina().getNireTaula().getGelaxka(x, y).getBandera()) {
 						Dragamina.getDragamina().partidaGaldu();
 					}
 					else {
