@@ -38,7 +38,7 @@ public class Dragamina extends JFrame implements Observer{
 	private JPanel pnlMatrizea;
 	private JPanel panelMenu;
 	private JPanel panelKontagailu;
-	private JButton jokatuBotoia;
+	private JButton jokatuBotoia;		//atributu moduan jarri metodo guztiek berdina erabili dezaten aurpegia aldatzeko
 	private JLabel[][] listaGelaxkak;
 	private Taula nireTaula;
 	private int zailtasuna = 2;
@@ -122,7 +122,6 @@ public class Dragamina extends JFrame implements Observer{
 			jokatuBotoia = new JButton();
 			jokatuBotoia.setIcon(new ImageIcon(this.getClass().getResource("cara1.gif")));
 			panelMenu.add(jokatuBotoia);	
-			
 		}
 		return panelMenu;
 	}
