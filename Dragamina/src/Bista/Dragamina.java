@@ -27,10 +27,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
-import Eredua.DragaminaKudeatzailea;
 import Eredua.Taula;
 
-public class Dragamina extends JFrame implements Observer{
+public class Dragamina extends JFrame /*implements Observer (hurrengo sprinterako)*/ {
 
 	private static final long serialVersionUID = 3805581801146219635L;
 	private static Dragamina nDragamina = null;
@@ -53,7 +52,7 @@ public class Dragamina extends JFrame implements Observer{
 	private Dragamina() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Lehioa izteko "X" klikatzean
 		this.initialize();
-		DragaminaKudeatzailea.getDragaminaKudeatzailea().addObserver(this);
+		//DragaminaKudeatzailea.getDragaminaKudeatzailea().addObserver(this); hurrengo sprinterako
 	}
 	
 	public static Dragamina getDragamina() {
@@ -63,14 +62,8 @@ public class Dragamina extends JFrame implements Observer{
 		return nDragamina;
 	}
 	
-	public void eguneratuBanderaKont() { //Pantailaratutako geratzen diren bandera kopurua eguneratzeko
-		Dragamina.getDragamina().nireTaula.printBanderaKop();		//momentuzkoa
-		//TODO
-	}
-	
 	private void kudeatuAmaiera() {
 		Dragamina.getDragamina().partidaIrabazi();
-		//TODO
 	}
 	
 	private void partidaIrabazi() {
@@ -78,13 +71,11 @@ public class Dragamina extends JFrame implements Observer{
 			Dragamina.getDragamina().nireTaula.banderaGuztiakJarri();
 			jokatuBotoia.setIcon(new ImageIcon(this.getClass().getResource("cara3.gif")));
 		}
-		//TODO
 	}
 	
 	private void partidaGaldu() {
 		Dragamina.getDragamina().nireTaula.irekiGuztiak();
 		jokatuBotoia.setIcon(new ImageIcon(this.getClass().getResource("cara2.gif")));
-		//TODO
 	}
 	
 	/**
@@ -107,7 +98,6 @@ public class Dragamina extends JFrame implements Observer{
 			contentPane = new JPanel();
 			contentPane.setLayout(new BorderLayout()); //contentPane-aren diseinua (hgap eta vgap gehitu behar izanez gero)
 			contentPane.add(getPanelMenu(), BorderLayout.NORTH);
-			contentPane.add(getPanelKontagailu(), BorderLayout.CENTER);
 			contentPane.add(getPnlMatrizea(), BorderLayout.SOUTH);
 		}
 		return contentPane;
@@ -128,22 +118,6 @@ public class Dragamina extends JFrame implements Observer{
 			jokatuBotoia.addMouseListener(this.getKontrolatzailea());
 		}
 		return panelMenu;
-	}
-	
-	/**
-	 * Kontagailuen panela
-	 */
-	private JPanel getPanelKontagailu() {
-		if (panelKontagailu==null) {
-			panelKontagailu = new JPanel();
-			FlowLayout kontagailuLayout = new FlowLayout();
-			panelKontagailu.setLayout(kontagailuLayout);
-			JLabel minaKontagailua = new JLabel("Mina kopurua: ");
-			JLabel denboraKont = new JLabel("Igarotako denbora: ");
-			panelKontagailu.add(minaKontagailua);
-			panelKontagailu.add(denboraKont);
-		}
-		return panelKontagailu;
 	}
 	
 	/**
@@ -275,12 +249,6 @@ public class Dragamina extends JFrame implements Observer{
 
 		@Override
 		public void mouseExited(MouseEvent e) {}
-		
-	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		DragaminaKudeatzailea dk = DragaminaKudeatzailea.getDragaminaKudeatzailea();
 		
 	}
 

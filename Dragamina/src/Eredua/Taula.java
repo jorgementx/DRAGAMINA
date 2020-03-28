@@ -145,13 +145,11 @@ public class Taula {
 			if (!this.gelaxkaMatrizea[x][y].getBandera() && !this.gelaxkaMatrizea[x][y].getGalderaMarka()) {
 				this.gelaxkaMatrizea[x][y].setBandera();
 				this.banderaKop--;
-				Dragamina.getDragamina().eguneratuBanderaKont();
 				Dragamina.getDragamina().getListaGelaxkak()[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("bandera.gif")));
 			}
 			else if (this.gelaxkaMatrizea[x][y].getBandera()) {
 				this.gelaxkaMatrizea[x][y].setBandera();
 				this.banderaKop++;
-				Dragamina.getDragamina().eguneratuBanderaKont();
 				this.gelaxkaMatrizea[x][y].setGalderaMarka();
 				Dragamina.getDragamina().getListaGelaxkak()[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("marca.gif")));
 			}
@@ -208,15 +206,10 @@ public class Taula {
 				if (!gelaxkaMatrizea[zutabe][errenkada].getKlikatuta() && !gelaxkaMatrizea[zutabe][errenkada].getBandera()){
 					gelaxkaMatrizea[zutabe][errenkada].setBandera();
 					this.banderaKop--;
-					Dragamina.getDragamina().eguneratuBanderaKont();
 					Dragamina.getDragamina().getListaGelaxkak()[zutabe][errenkada].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("bandera.gif")));
 				}
 			}
 		}
-	}
-	
-	public void printBanderaKop(){				//momentuzkoa
-		System.out.println(this.banderaKop);		
 	}
 	
 }
