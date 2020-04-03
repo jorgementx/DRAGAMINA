@@ -57,6 +57,10 @@ public class Dragamina extends JFrame implements Observer {
 		return this.errenk;
 	}
 	
+	public int getZailtasuna() {
+		return this.zailtasuna;
+	}
+	
 	private void initialize() {
 		this.setSize(300, 380); //Leihoaren tamaina
 		this.setResizable(false); //Leihoaren tamaina aldatu ezin izateko
