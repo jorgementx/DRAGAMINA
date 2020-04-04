@@ -28,7 +28,7 @@ public class Taula extends Observable {
 		return nTaula;
 	}
 
-	private void taulaHasieratu() {
+	private void taulaHasieratu() {	//este metodo habria que hacer que metiera minas y todo directamente porque la clase gelaxka es abstracta (como puso el)
 		for (int x=0;x<this.gelaxkaMatrizea.length;x++) {
 			for (int y=0;y<this.gelaxkaMatrizea[0].length;y++) {
 				this.gelaxkaMatrizea[x][y]=new Gelaxka();

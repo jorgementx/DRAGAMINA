@@ -1,17 +1,19 @@
 package Eredua;
 
-import java.awt.image.BandedSampleModel;
-
 public class Markatuta implements Egoera {
 
 	public Markatuta(){}
 		
-	public void ireki(int x, int y){
-			
+	public void ireki(Gelaxka pGelaxka){
+		//ez da ezer gertatu behar
 	}
 		
-	public void banderaAldatu(){
-			
+	public void banderaAldatu(Gelaxka pGelaxka){
+			pGelaxka.egoeraAldatu(new Itxita());
+	}
+
+	public void errekIreki(Gelaxka pGelaxka) {//agian soberan
+		//ez da ezer gertatu behar
 	}
 		
 }

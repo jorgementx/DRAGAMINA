@@ -230,6 +230,7 @@ public class Dragamina extends JFrame /*implements Observer (hurrengo sprinterak
 					//setVisible(false); 	//JFrame objektua ikusten utzi
 					dispose(); 				//JFrame objektua suntsitu
 					nDragamina = new Dragamina();
+					
 					//resetDragamina();
 					//System.out.println("partida berria");
 					//TODO
