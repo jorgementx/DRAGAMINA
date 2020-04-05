@@ -11,6 +11,6 @@ public class Mina extends Gelaxka {
 	public void gelaxkaIreki(){
 		super.gelaxkaIreki();
 
-		//GALDU DUZULA KUDEATU
+		//GALDU DUZULA KUDEATU.
 	}
 }
