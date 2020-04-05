@@ -2,6 +2,8 @@ package Eredua;
 
 import java.util.Observable;
 
+import javax.swing.ImageIcon;
+
 import Bista.Dragamina;
 
 public class Taula extends Observable {
@@ -40,8 +42,27 @@ public class Taula extends Observable {
 		nTaula=null;
 	}
 	
-	public void irekiGelaxka(int x, int y) { //gelaxka hutsa bada errekurtsiboki ingurukoak ireki alboan mina bat egon arte
-		//TODO
+	public void irekiGelaxka(int x, int y) { 
+		if (x>=this.gelaxkaMatrizea.length || y>=this.gelaxkaMatrizea[0].length || x<0 || y<0) {}
+		else {
+			if (this.gelaxkaMatrizea[x][y] instanceof Mina) { //agian zihurtatu aldez aurretik mina den edo ez casting-a egiteko
+				((Mina)this.gelaxkaMatrizea[x][y]).gelaxkaIreki();
+			}
+			else {
+				this.gelaxkaMatrizea[x][y].gelaxkaIreki();
+				if (this.gelaxkaMatrizea[x][y] instanceof Hutsik) {
+					irekiGelaxka(x-1,y-1);
+					irekiGelaxka(x,y-1);
+					irekiGelaxka(x+1,y-1);
+					irekiGelaxka(x-1,y);
+					irekiGelaxka(x+1,y);
+					irekiGelaxka(x-1,y+1);
+					irekiGelaxka(x,y+1);
+					irekiGelaxka(x+1,y+1);
+				}
+			}
+		}
+		
 		setChanged();
 		notifyObservers();
 	}
