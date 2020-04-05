@@ -1,5 +1,7 @@
 package Eredua;
 
+import Bista.Dragamina;
+
 public class Mina extends Gelaxka {
 
 	public Mina(){
@@ -8,6 +10,7 @@ public class Mina extends Gelaxka {
 	
 	public void gelaxkaIreki(){
 		super.gelaxkaIreki();
-		//Galdu duzula kudeatu
+
+		//GALDU DUZULA KUDEATU
 	}
 }
