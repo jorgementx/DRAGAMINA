@@ -6,7 +6,4 @@ public class Hutsik extends Gelaxka {
 		egoera = new Itxita();
 	}
 	
-	public void gelaxkaIreki(){
-		egoera.errekIreki(this);
-	}
 }

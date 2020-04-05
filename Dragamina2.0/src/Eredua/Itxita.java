@@ -12,9 +12,5 @@ public class Itxita implements Egoera {
 		pGelaxka.egoeraAldatu(new Markatuta());
 	}
 
-	public void errekIreki(Gelaxka pGelaxka) {//agian soberan
-		// TODO
-		
-	}
 
 }

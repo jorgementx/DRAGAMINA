@@ -12,8 +12,4 @@ public class Irekita implements Egoera {
 		//ez da ezer gertatu behar
 	}
 
-	public void errekIreki(Gelaxka pGelaxka) {//agian soberan
-		//ez da ezer gertatu behar
-		
-	}
 }
