@@ -1,5 +1,6 @@
 package Eredua;
 
+// Klase abstraktua
 public abstract class Gelaxka {
 	protected Egoera egoera;
 	
@@ -20,5 +21,4 @@ public abstract class Gelaxka {
 	public Egoera getEgoera() {
 		return this.egoera;
 	}
-	
 }

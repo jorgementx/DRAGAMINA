@@ -1,10 +1,10 @@
 package Eredua;
 
-public class Zenbakidun extends Gelaxka {
+public class ZenbakidunGelaxka extends Gelaxka {
 	
 	private int kopurua;
 	
-	public Zenbakidun(){
+	public ZenbakidunGelaxka(){
 		egoera = new Itxita();
 		this.kopurua=0;
 	}

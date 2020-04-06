@@ -2,9 +2,9 @@ package Eredua;
 
 import Bista.Dragamina;
 
-public class Mina extends Gelaxka {
+public class MinaGelaxka extends Gelaxka {
 
-	public Mina(){
+	public MinaGelaxka(){
 		egoera = new Itxita();
 	}
 }

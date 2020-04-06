@@ -21,13 +21,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Eredua.Gelaxka;
-import Eredua.Hutsik;
+import Eredua.HutsikGelaxka;
 import Eredua.Irekita;
 import Eredua.Itxita;
 import Eredua.Markatuta;
-import Eredua.Mina;
+import Eredua.MinaGelaxka;
 import Eredua.Taula;
-import Eredua.Zenbakidun;
+import Eredua.ZenbakidunGelaxka;
 
 public class Dragamina extends JFrame implements Observer {
 
@@ -160,21 +160,21 @@ public class Dragamina extends JFrame implements Observer {
 			for (int y=0;y<this.listaGelaxkak[0].length;y++) {
 				Gelaxka pGelaxka=Taula.getTaula().getGelaxkaMatrizea()[x][y];
 				if (pGelaxka.getEgoera() instanceof Irekita) { //Gelaxkaren egoera Irekita da
-					if (pGelaxka instanceof Hutsik) {
+					if (pGelaxka instanceof HutsikGelaxka) {
 						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("c0.gif")));
 					}
-					else if (pGelaxka instanceof Zenbakidun) {
-						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("c"+((Zenbakidun)pGelaxka).getEgoera()+".gif")));
+					else if (pGelaxka instanceof ZenbakidunGelaxka) {
+						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("c"+((ZenbakidunGelaxka)pGelaxka).getEgoera()+".gif")));
 					}
 					else {
 						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("mina-r.gif")));
 					}
 				}
 				else if (pGelaxka.getEgoera() instanceof Itxita) { //Gelaxkaren egoera itxita da
-					if ((pGelaxka instanceof Mina) && (Taula.getTaula().getGalduta())) {
+					if ((pGelaxka instanceof MinaGelaxka) && (Taula.getTaula().getGalduta())) {
 						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("mina-n.gif")));
 					}
-					else if ((pGelaxka instanceof Mina) && (Taula.getTaula().getIrabazita())) {
+					else if ((pGelaxka instanceof MinaGelaxka) && (Taula.getTaula().getIrabazita())) {
 						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("bandera.gif")));
 					}
 					else {
@@ -182,10 +182,10 @@ public class Dragamina extends JFrame implements Observer {
 					}
 				}
 				else { //Gelaxkaren egoera markatuta da
-					if (((pGelaxka instanceof Hutsik) || (pGelaxka instanceof Zenbakidun)) && (Taula.getTaula().getGalduta())) {
+					if (((pGelaxka instanceof HutsikGelaxka) || (pGelaxka instanceof ZenbakidunGelaxka)) && (Taula.getTaula().getGalduta())) {
 						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("mina-x.gif")));
 					}
-					else if ((pGelaxka instanceof Mina) && (Taula.getTaula().getGalduta())) {
+					else if ((pGelaxka instanceof MinaGelaxka) && (Taula.getTaula().getGalduta())) {
 						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("mina-n.gif")));
 					}
 					else {
