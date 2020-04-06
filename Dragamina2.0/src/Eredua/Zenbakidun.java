@@ -12,4 +12,8 @@ public class Zenbakidun extends Gelaxka {
 	public void setKopurua(int pKop) {
 		this.kopurua=pKop;
 	}
+	
+	public int getKopurua() {
+		return this.kopurua;
+	}
 }

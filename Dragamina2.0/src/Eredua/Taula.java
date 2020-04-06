@@ -12,12 +12,16 @@ public class Taula extends Observable {
 	private boolean minakJarrita;
 	private int minaKop;
 	private int banderaKop;
+	private boolean galduta;
+	private boolean irabazita;
 	
 	private static Taula nTaula=null;
 	
 	private Taula() {
 		this.gelaxkaMatrizea=new Gelaxka[Dragamina.getDragamina().getZutab()][Dragamina.getDragamina().getErrenk()];
 		this.minakJarrita=false;
+		this.galduta=false;
+		this.irabazita=false;
 		this.minaKop=this.gelaxkaMatrizea.length*Dragamina.getDragamina().getZailtasuna();
 		this.banderaKop=this.gelaxkaMatrizea.length*Dragamina.getDragamina().getZailtasuna();
 		this.taulaHasieratu();
@@ -33,6 +37,14 @@ public class Taula extends Observable {
 	public Gelaxka[][] getGelaxkaMatrizea() {
 		return this.gelaxkaMatrizea;
 	}
+	
+	public boolean getGalduta() {
+		return this.galduta;
+	}
+	
+	public boolean getIrabazita() {
+		return this.irabazita;
+	}
 
 	private void taulaHasieratu() {
 		for (int x=0;x<this.gelaxkaMatrizea.length;x++) {
@@ -47,30 +59,35 @@ public class Taula extends Observable {
 	}
 	
 	public void irekiGelaxka(int x, int y) {
-		if (!this.minakJarrita) {
-			this.hasieratuMinak(x, y);
-		}
-		if (x>=this.gelaxkaMatrizea.length || y>=this.gelaxkaMatrizea[0].length || x<0 || y<0) {}
+		if (this.galduta || this.irabazita) {}
 		else {
-			this.gelaxkaMatrizea[x][y].gelaxkaIreki();
-			if (this.gelaxkaMatrizea[x][y] instanceof Mina) {
-				this.irekiGuztiak();
+			if (!this.minakJarrita) {
+				this.hasieratuMinak(x, y);
 			}
+			if (x>=this.gelaxkaMatrizea.length || y>=this.gelaxkaMatrizea[0].length || x<0 || y<0) {}
 			else {
-				if (this.gelaxkaMatrizea[x][y] instanceof Hutsik) {
-					irekiGelaxka(x-1,y-1);
-					irekiGelaxka(x,y-1);
-					irekiGelaxka(x+1,y-1);
-					irekiGelaxka(x-1,y);
-					irekiGelaxka(x+1,y);
-					irekiGelaxka(x-1,y+1);
-					irekiGelaxka(x,y+1);
-					irekiGelaxka(x+1,y+1);
+				this.gelaxkaMatrizea[x][y].gelaxkaIreki(); //Dei orokorra gelaxka guztientzat, mota kontuan izan gabe
+				if (this.gelaxkaMatrizea[x][y] instanceof Mina) { //Gelaxka Mina motakoa bada
+					this.irekiGuztiak();
+					this.galduta=true;
+				}
+				else { //Gelaxka Mina ez den mota batekoa bada
+					if (this.gelaxkaMatrizea[x][y] instanceof Hutsik) { //Mina Hutsik motakoa bada
+						irekiGelaxka(x-1,y-1);
+						irekiGelaxka(x,y-1);
+						irekiGelaxka(x+1,y-1);
+						irekiGelaxka(x-1,y);
+						irekiGelaxka(x+1,y);
+						irekiGelaxka(x-1,y+1);
+						irekiGelaxka(x,y+1);
+						irekiGelaxka(x+1,y+1);
+					}
+					this.irabaziKonprobaketa();
 				}
 			}
+			setChanged();
+			notifyObservers();
 		}
-		setChanged();
-		notifyObservers();
 	}
 	
 	public void hasieratuMinak(int x, int y) {
@@ -151,13 +168,32 @@ public class Taula extends Observable {
 	public void irekiGuztiak() {
 		for (int zutabe=0; zutabe < gelaxkaMatrizea.length; zutabe++){
 			for (int errenkada=0; errenkada < gelaxkaMatrizea[0].length; errenkada++){
-				this.gelaxkaMatrizea[zutabe][errenkada].gelaxkaIreki();
+				if (!(this.getGelaxkaMatrizea()[zutabe][errenkada] instanceof Mina)) {
+					this.gelaxkaMatrizea[zutabe][errenkada].gelaxkaIreki();
+				}
 			}
 		}
 	}
 	
+	public void irabaziKonprobaketa() {
+		int kont=0;
+		for (int zutabe=0; zutabe < gelaxkaMatrizea.length; zutabe++){
+			for (int errenkada=0; errenkada < gelaxkaMatrizea[0].length; errenkada++){
+				if (!(gelaxkaMatrizea[zutabe][errenkada].getEgoera() instanceof Irekita)){
+					kont++;
+				}
+			}
+		}
+		if (kont==minaKop){
+			irabazita=true;
+		}
+	}
+	
 	public void eskumakoBotoia(int x, int y) {
-		//TODO
+		if (this.galduta || this.irabazita) {}
+		else { //Partida ez bada bukatu
+			this.gelaxkaMatrizea[x][y].gelaxkanBanderaAldatu();
+		}
 		setChanged();
 		notifyObservers();
 	}

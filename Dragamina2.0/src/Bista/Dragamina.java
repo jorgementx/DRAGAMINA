@@ -20,7 +20,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Eredua.Gelaxka;
+import Eredua.Hutsik;
+import Eredua.Irekita;
+import Eredua.Itxita;
+import Eredua.Markatuta;
+import Eredua.Mina;
 import Eredua.Taula;
+import Eredua.Zenbakidun;
 
 public class Dragamina extends JFrame implements Observer {
 
@@ -149,7 +156,53 @@ public class Dragamina extends JFrame implements Observer {
 	}
 	
 	private void matrizeaEguneratu() {
-		//TODO
+		for (int x=0;x<this.listaGelaxkak.length;x++) {
+			for (int y=0;y<this.listaGelaxkak[0].length;y++) {
+				Gelaxka pGelaxka=Taula.getTaula().getGelaxkaMatrizea()[x][y];
+				if (pGelaxka.getEgoera() instanceof Irekita) { //Gelaxkaren egoera Irekita da
+					if (pGelaxka instanceof Hutsik) {
+						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("c0.gif")));
+					}
+					else if (pGelaxka instanceof Zenbakidun) {
+						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("c"+((Zenbakidun)pGelaxka).getEgoera()+".gif")));
+					}
+					else {
+						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("mina-r.gif")));
+					}
+				}
+				else if (pGelaxka.getEgoera() instanceof Itxita) { //Gelaxkaren egoera itxita da
+					if ((pGelaxka instanceof Mina) && (Taula.getTaula().getGalduta())) {
+						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("mina-n.gif")));
+					}
+					else if ((pGelaxka instanceof Mina) && (Taula.getTaula().getIrabazita())) {
+						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("bandera.gif")));
+					}
+					else {
+						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("tablero.gif")));
+					}
+				}
+				else { //Gelaxkaren egoera markatuta da
+					if (((pGelaxka instanceof Hutsik) || (pGelaxka instanceof Zenbakidun)) && (Taula.getTaula().getGalduta())) {
+						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("mina-x.gif")));
+					}
+					else if ((pGelaxka instanceof Mina) && (Taula.getTaula().getGalduta())) {
+						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("mina-n.gif")));
+					}
+					else {
+						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("bandera.gif")));
+					}
+				}
+			}
+		}
+	}
+	
+	private void aurpegiaEguneratu() {
+		if (Taula.getTaula().getGalduta()) {
+			jokatuBotoia.setIcon(new ImageIcon(this.getClass().getResource("cara2.gif")));
+		}
+		else if (Taula.getTaula().getIrabazita()) {
+			jokatuBotoia.setIcon(new ImageIcon(this.getClass().getResource("cara3.gif")));
+		}
 	}
 	
 	private Kontrolatzailea getKontrolatzailea() {
@@ -220,7 +273,8 @@ public class Dragamina extends JFrame implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		this.matrizeaEguneratu();
-		//TODO
+		this.aurpegiaEguneratu();
+		//TODO //agian hemen ez da ezer gehiago egin behar
 	}
 
 }
