@@ -30,10 +30,10 @@ public class Taula extends Observable {
 		return nTaula;
 	}
 
-	private void taulaHasieratu() {	//este metodo habria que hacer que metiera minas y todo directamente porque la clase gelaxka es abstracta (como puso el)
+	private void taulaHasieratu() {
 		for (int x=0;x<this.gelaxkaMatrizea.length;x++) {
 			for (int y=0;y<this.gelaxkaMatrizea[0].length;y++) {
-				this.gelaxkaMatrizea[x][y]=new Gelaxka();
+				this.gelaxkaMatrizea[x][y]=GelaxkaFactory.getGelaxkaFactory().gelaxkaSortu("Hutsik");
 			}
 		}
 	}
@@ -42,7 +42,10 @@ public class Taula extends Observable {
 		nTaula=null;
 	}
 	
-	public void irekiGelaxka(int x, int y) { 
+	public void irekiGelaxka(int x, int y) {
+		if (!this.minakJarrita) {
+			this.hasieratuMinak(x, y);
+		}
 		if (x>=this.gelaxkaMatrizea.length || y>=this.gelaxkaMatrizea[0].length || x<0 || y<0) {}
 		else {
 			if (this.gelaxkaMatrizea[x][y] instanceof Mina) { //agian zihurtatu aldez aurretik mina den edo ez casting-a egiteko
@@ -65,6 +68,81 @@ public class Taula extends Observable {
 		
 		setChanged();
 		notifyObservers();
+	}
+	
+	public void hasieratuMinak(int x, int y) {
+		int jartzekoFalta=this.minaKop;
+		int randomZut=0;
+		int randomErrenk=0;
+		while (jartzekoFalta>0) {
+			randomZut=(int)(Math.random()*this.gelaxkaMatrizea.length);
+			randomErrenk=(int)(Math.random()*this.gelaxkaMatrizea[0].length);
+			if (!(this.gelaxkaMatrizea[randomZut][randomErrenk] instanceof Mina) && randomZut!=x && randomErrenk!=y) {
+				this.gelaxkaMatrizea[randomZut][randomErrenk]=GelaxkaFactory.getGelaxkaFactory().gelaxkaSortu("Mina");
+				jartzekoFalta--;
+			}
+		}
+		this.minaKopJarriGelaxketan();
+		this.minakJarrita=true;
+	}
+	
+	private void minaKopJarriGelaxketan() {
+		for (int x=0;x<this.gelaxkaMatrizea.length;x++) {
+			for (int y=0;y<this.gelaxkaMatrizea[0].length;y++) {
+				if (!(this.gelaxkaMatrizea[x][y] instanceof Mina)) {
+					int kopurua=this.ingurukoMinak(x, y);
+					if (kopurua>0) {
+						this.gelaxkaMatrizea[x][y]=GelaxkaFactory.getGelaxkaFactory().gelaxkaSortu("Zenbakidun");
+						((Zenbakidun)this.gelaxkaMatrizea[x][y]).setKopurua(kopurua);
+					}
+				}
+			}
+		}
+	}
+	
+	private int ingurukoMinak (int x, int y) { //inguruko gelaxkak minak al diren begiratzen du
+		int kopurua=0;
+		if (x>0 && y>0) {
+			if (this.gelaxkaMatrizea[x-1][y-1] instanceof Mina) {
+				kopurua++;
+			}
+		}
+		if (x>0) {
+			if (this.gelaxkaMatrizea[x-1][y] instanceof Mina) {
+				kopurua++;
+			}
+		}
+		if (x>0 && y<(this.gelaxkaMatrizea[0].length-1)) {
+			if (this.gelaxkaMatrizea[x-1][y+1] instanceof Mina) {
+				kopurua++;
+			}
+		}
+		if (y>0) {
+			if (this.gelaxkaMatrizea[x][y-1] instanceof Mina) {
+				kopurua++;
+			}
+		}
+		if (y<(this.gelaxkaMatrizea[0].length-1)) {
+			if (this.gelaxkaMatrizea[x][y+1] instanceof Mina) {
+				kopurua++;
+			}
+		}
+		if (x<(this.gelaxkaMatrizea.length-1) && y>0) {
+			if (this.gelaxkaMatrizea[x+1][y-1] instanceof Mina) {
+				kopurua++;
+			}
+		}
+		if (x<(this.gelaxkaMatrizea.length-1)) {
+			if (this.gelaxkaMatrizea[x+1][y] instanceof Mina) {
+				kopurua++;
+			}
+		}
+		if (x<(this.gelaxkaMatrizea.length-1) && y<(this.gelaxkaMatrizea[0].length-1)) {
+			if (this.gelaxkaMatrizea[x+1][y+1] instanceof Mina) {
+				kopurua++;
+			}
+		}
+		return kopurua;
 	}
 	
 	public void eskumakoBotoia(int x, int y) {
