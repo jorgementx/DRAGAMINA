@@ -29,6 +29,10 @@ public class Taula extends Observable {
 		}
 		return nTaula;
 	}
+	
+	public Gelaxka[][] getGelaxkaMatrizea() {
+		return this.gelaxkaMatrizea;
+	}
 
 	private void taulaHasieratu() {
 		for (int x=0;x<this.gelaxkaMatrizea.length;x++) {
@@ -49,15 +53,20 @@ public class Taula extends Observable {
 		if (x>=this.gelaxkaMatrizea.length || y>=this.gelaxkaMatrizea[0].length || x<0 || y<0) {}
 		else {
 			this.gelaxkaMatrizea[x][y].gelaxkaIreki();
-			if (this.gelaxkaMatrizea[x][y] instanceof Hutsik) {
-				irekiGelaxka(x-1,y-1);
-				irekiGelaxka(x,y-1);
-				irekiGelaxka(x+1,y-1);
-				irekiGelaxka(x-1,y);
-				irekiGelaxka(x+1,y);
-				irekiGelaxka(x-1,y+1);
-				irekiGelaxka(x,y+1);
-				irekiGelaxka(x+1,y+1);
+			if (this.gelaxkaMatrizea[x][y] instanceof Mina) {
+				this.irekiGuztiak();
+			}
+			else {
+				if (this.gelaxkaMatrizea[x][y] instanceof Hutsik) {
+					irekiGelaxka(x-1,y-1);
+					irekiGelaxka(x,y-1);
+					irekiGelaxka(x+1,y-1);
+					irekiGelaxka(x-1,y);
+					irekiGelaxka(x+1,y);
+					irekiGelaxka(x-1,y+1);
+					irekiGelaxka(x,y+1);
+					irekiGelaxka(x+1,y+1);
+				}
 			}
 		}
 		setChanged();
@@ -137,6 +146,14 @@ public class Taula extends Observable {
 			}
 		}
 		return kopurua;
+	}
+
+	public void irekiGuztiak() {
+		for (int zutabe=0; zutabe < gelaxkaMatrizea.length; zutabe++){
+			for (int errenkada=0; errenkada < gelaxkaMatrizea[0].length; errenkada++){
+				this.gelaxkaMatrizea[zutabe][errenkada].gelaxkaIreki();
+			}
+		}
 	}
 	
 	public void eskumakoBotoia(int x, int y) {
