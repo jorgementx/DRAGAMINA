@@ -48,21 +48,16 @@ public class Taula extends Observable {
 		}
 		if (x>=this.gelaxkaMatrizea.length || y>=this.gelaxkaMatrizea[0].length || x<0 || y<0) {}
 		else {
-			if (this.gelaxkaMatrizea[x][y] instanceof Mina) { //agian zihurtatu aldez aurretik mina den edo ez casting-a egiteko
-				((Mina)this.gelaxkaMatrizea[x][y]).gelaxkaIreki();
-			}
-			else {
-				this.gelaxkaMatrizea[x][y].gelaxkaIreki();
-				if (this.gelaxkaMatrizea[x][y] instanceof Hutsik) {
-					irekiGelaxka(x-1,y-1);
-					irekiGelaxka(x,y-1);
-					irekiGelaxka(x+1,y-1);
-					irekiGelaxka(x-1,y);
-					irekiGelaxka(x+1,y);
-					irekiGelaxka(x-1,y+1);
-					irekiGelaxka(x,y+1);
-					irekiGelaxka(x+1,y+1);
-				}
+			this.gelaxkaMatrizea[x][y].gelaxkaIreki();
+			if (this.gelaxkaMatrizea[x][y] instanceof Hutsik) {
+				irekiGelaxka(x-1,y-1);
+				irekiGelaxka(x,y-1);
+				irekiGelaxka(x+1,y-1);
+				irekiGelaxka(x-1,y);
+				irekiGelaxka(x+1,y);
+				irekiGelaxka(x-1,y+1);
+				irekiGelaxka(x,y+1);
+				irekiGelaxka(x+1,y+1);
 			}
 		}
 		
