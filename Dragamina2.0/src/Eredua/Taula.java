@@ -60,7 +60,6 @@ public class Taula extends Observable {
 				irekiGelaxka(x+1,y+1);
 			}
 		}
-		
 		setChanged();
 		notifyObservers();
 	}

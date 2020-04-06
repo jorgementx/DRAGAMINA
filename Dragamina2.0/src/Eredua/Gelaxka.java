@@ -17,4 +17,8 @@ public abstract class Gelaxka {
 		this.egoera=pEgoera;
 	}
 	
+	public Egoera getEgoera() {
+		return this.egoera;
+	}
+	
 }
