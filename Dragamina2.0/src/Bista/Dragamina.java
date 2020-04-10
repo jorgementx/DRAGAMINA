@@ -274,6 +274,7 @@ public class Dragamina extends JFrame implements Observer {
 	public void update(Observable o, Object arg) {
 		this.matrizeaEguneratu();
 		this.aurpegiaEguneratu();
+		//this.banderaKontEguneratu();
 		//TODO //agian hemen ez da ezer gehiago egin behar
 	}
 
