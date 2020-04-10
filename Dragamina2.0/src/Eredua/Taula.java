@@ -196,6 +196,12 @@ public class Taula extends Observable {
 		if (this.galduta || this.irabazita) {}
 		else { //Partida ez bada bukatu
 			this.gelaxkaMatrizea[x][y].gelaxkanBanderaAldatu();
+			if (this.gelaxkaMatrizea[x][y].getEgoera() instanceof Markatuta) {
+				this.banderaKop--;
+			}
+			else {
+				this.banderaKop++;
+			}
 		}
 		setChanged();
 		notifyObservers();
