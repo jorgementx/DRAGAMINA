@@ -164,7 +164,7 @@ public class Dragamina extends JFrame implements Observer {
 						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("c0.gif")));
 					}
 					else if (pGelaxka instanceof ZenbakidunGelaxka) {
-						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("c"+((ZenbakidunGelaxka)pGelaxka).getEgoera()+".gif")));
+						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("c"+((ZenbakidunGelaxka)pGelaxka).getKopurua()+".gif")));
 					}
 					else {
 						this.listaGelaxkak[x][y].setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("mina-r.gif")));
@@ -247,7 +247,7 @@ public class Dragamina extends JFrame implements Observer {
 				}
 				if (aurk) {
 					if ((e.getModifiers() & InputEvent.BUTTON1_MASK) != 0) { //Ezkerreko botoia
-						Taula.getTaula().irekiGelaxka(x, y);
+						Taula.getTaula().irekiKudeatu(x, y);
 					}
 					else if ((e.getModifiers() & InputEvent.BUTTON3_MASK) != 0) { //Eskumako botoia
 						Taula.getTaula().eskumakoBotoia(x, y);
@@ -272,7 +272,7 @@ public class Dragamina extends JFrame implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		this.matrizeaEguneratu();
+		//this.matrizeaEguneratu();
 		this.aurpegiaEguneratu();
 		//TODO //agian hemen ez da ezer gehiago egin behar
 	}

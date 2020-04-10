@@ -18,12 +18,12 @@ public class Taula extends Observable {
 	private static Taula nTaula=null;
 	
 	private Taula() {
-		this.gelaxkaMatrizea=new Gelaxka[Dragamina.getDragamina().getZutab()][Dragamina.getDragamina().getErrenk()];
+		this.gelaxkaMatrizea=new Gelaxka[10][15];
 		this.minakJarrita=false;
 		this.galduta=false;
 		this.irabazita=false;
-		this.minaKop=this.gelaxkaMatrizea.length*Dragamina.getDragamina().getZailtasuna();
-		this.banderaKop=this.gelaxkaMatrizea.length*Dragamina.getDragamina().getZailtasuna();
+		this.minaKop=this.gelaxkaMatrizea.length*2;
+		this.banderaKop=this.gelaxkaMatrizea.length*2;
 		this.taulaHasieratu();
 	}
 	
@@ -58,7 +58,13 @@ public class Taula extends Observable {
 		nTaula=null;
 	}
 	
-	public void irekiGelaxka(int x, int y) {
+	public void irekiKudeatu(int x, int y) {
+		this.irekiGelaxka(x, y);
+		setChanged();
+		notifyObservers();
+	}
+	
+	private void irekiGelaxka(int x, int y) {
 		if (this.galduta || this.irabazita) {}
 		else {
 			if (!this.minakJarrita) {
@@ -85,8 +91,6 @@ public class Taula extends Observable {
 					this.irabaziKonprobaketa();
 				}
 			}
-			setChanged();
-			notifyObservers();
 		}
 	}
 	
