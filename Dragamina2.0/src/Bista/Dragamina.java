@@ -272,7 +272,7 @@ public class Dragamina extends JFrame implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		//this.matrizeaEguneratu();
+		this.matrizeaEguneratu();
 		this.aurpegiaEguneratu();
 		//TODO //agian hemen ez da ezer gehiago egin behar
 	}

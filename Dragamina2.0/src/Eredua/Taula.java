@@ -14,7 +14,6 @@ public class Taula extends Observable {
 	private int banderaKop;
 	private boolean galduta;
 	private boolean irabazita;
-	
 	private static Taula nTaula=null;
 	
 	private Taula() {
@@ -71,7 +70,7 @@ public class Taula extends Observable {
 				this.hasieratuMinak(x, y);
 			}
 			if (x>=this.gelaxkaMatrizea.length || y>=this.gelaxkaMatrizea[0].length || x<0 || y<0) {}
-			else {
+			else if (!(this.gelaxkaMatrizea[x][y].getEgoera() instanceof Irekita)) {
 				this.gelaxkaMatrizea[x][y].gelaxkaIreki(); //Dei orokorra gelaxka guztientzat, mota kontuan izan gabe
 				if (this.gelaxkaMatrizea[x][y] instanceof MinaGelaxka) { //Gelaxka Mina motakoa bada
 					this.irekiGuztiak();
