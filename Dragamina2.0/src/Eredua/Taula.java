@@ -5,9 +5,11 @@ import java.util.Observable;
 import javax.swing.ImageIcon;
 
 import Bista.Dragamina;
+import Bista.ZailtasunPantaila;
 
 public class Taula extends Observable {
 	
+	private int zailtasuna;
 	private Gelaxka[][] gelaxkaMatrizea;
 	private boolean minakJarrita;
 	private int minaKop;
@@ -17,7 +19,8 @@ public class Taula extends Observable {
 	private static Taula nTaula=null;
 	
 	private Taula() {
-		this.gelaxkaMatrizea=new Gelaxka[10][15];
+		this.zailtasuna=ZailtasunPantaila.getZailtasunPantaila().getZailtasuna();
+		this.taularenTamaina();
 		this.minakJarrita=false;
 		this.galduta=false;
 		this.irabazita=false;
@@ -31,6 +34,18 @@ public class Taula extends Observable {
 			nTaula = new Taula();
 		}
 		return nTaula;
+	}
+	
+	private void taularenTamaina() {
+		if (this.zailtasuna==1) {
+			this.gelaxkaMatrizea=new Gelaxka[7][10];
+		}
+		else if (this.zailtasuna==2) {
+			this.gelaxkaMatrizea=new Gelaxka[10][15];
+		}
+		else if (this.zailtasuna==3) {
+			this.gelaxkaMatrizea=new Gelaxka[12][25];
+		}
 	}
 	
 	public Gelaxka[][] getGelaxkaMatrizea() {

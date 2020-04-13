@@ -1,6 +1,7 @@
 package Bista;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
@@ -39,12 +40,13 @@ public class Dragamina extends JFrame implements Observer {
 	private JPanel panelMenu;
 	private JLabel jokatuBotoia;
 	private JLabel[][] listaGelaxkak;
-	private int zailtasuna=2;
+	private int zailtasuna;
 	private int errenk;
 	private int zutab;
 
 	private Dragamina() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Lehioa izteko "X" klikatzean
+		this.zailtasuna=ZailtasunPantaila.getZailtasunPantaila().getZailtasuna();
 		this.initialize();
 		Taula.getTaula().addObserver(this);
 	}
@@ -64,17 +66,26 @@ public class Dragamina extends JFrame implements Observer {
 		return this.errenk;
 	}
 	
-	public int getZailtasuna() {
-		return this.zailtasuna;
-	}
-	
 	private void initialize() {
-		this.setSize(300, 380); //Leihoaren tamaina
 		this.setResizable(false); //Leihoaren tamaina aldatu ezin izateko
 		this.setContentPane(getContentPane()); //Sortu eta finkatu contentPane
-		this.setTitle("Dragamina"); //Leihoaren izena finkatu
+		this.setTitle("Dragamina"); //Leihoaren izena finkatux
+		this.leihoarenTamaina();
 		this.setLocationRelativeTo(null); //Leihoa monitorearen erdian pantailaratzeko
+		this.setIconImage(new ImageIcon(this.getClass().getResource("icono.png")).getImage());
 		this.setVisible(true); //Leihoa bistaratzeko agindua
+	}
+	
+	private void leihoarenTamaina() {
+		if (this.zailtasuna==1) {
+			this.setSize(166, 283);
+		}
+		else if (this.zailtasuna==2) {
+			this.setSize(224, 383);
+		}
+		else if (this.zailtasuna==3) {
+			this.setSize(264, 583);
+		}
 	}
 	
 	public JPanel getContentPane() {
@@ -82,7 +93,7 @@ public class Dragamina extends JFrame implements Observer {
 			contentPane = new JPanel();
 			contentPane.setLayout(new BorderLayout()); //contentPane-aren diseinua (hgap eta vgap gehitu behar izanez gero)
 			contentPane.add(getPanelMenu(), BorderLayout.NORTH);
-			contentPane.add(getPnlMatrizea(), BorderLayout.SOUTH);
+			contentPane.add(getPnlMatrizea(), BorderLayout.CENTER);
 		}
 		return contentPane;
 	}
