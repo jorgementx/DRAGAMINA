@@ -10,6 +10,8 @@ public class RankingPantaila extends JFrame {
 	
 	private static final long serialVersionUID = 3805581801146219635L;
 	private static RankingPantaila nRankingPantaila = null;
+	private JPanel contentPane = new JPanel();
+	private JLabel rankingLabel = new JLabel("RANKING");
 	
 	private RankingPantaila() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,10 +26,9 @@ public class RankingPantaila extends JFrame {
 	}
 	
 	public JPanel getContentPane() {
-		JPanel contentPane = new JPanel();
 		contentPane.setLayout(new GridLayout(11,1));
-		contentPane.add(new JLabel("RANKING"));		
-		
+		contentPane.add(rankingLabel);		
+		//TODO : Hemen sartu behar da erabiltzaile zerrenda
 		return contentPane;
 	}
 	
@@ -44,6 +45,6 @@ public class RankingPantaila extends JFrame {
 	
 	// Probak egiteko main hau sortu dut
 	public static void main(String[] args) {
-		RankingPantaila nR = RankingPantaila.getRankingPantaila();
+		RankingPantaila.getRankingPantaila();
 	}
 }
