@@ -59,6 +59,10 @@ public class Taula extends Observable {
 	public boolean getIrabazita() {
 		return this.irabazita;
 	}
+	
+	public int getBanderaKop(){
+		return this.banderaKop;
+	}
 
 	private void taulaHasieratu() {
 		for (int x=0;x<this.gelaxkaMatrizea.length;x++) {

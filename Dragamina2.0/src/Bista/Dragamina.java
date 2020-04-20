@@ -39,6 +39,9 @@ public class Dragamina extends JFrame implements Observer {
 	private JPanel pnlMatrizea;
 	private JPanel panelMenu;
 	private JLabel jokatuBotoia;
+	//private JLabel bKontEhuneko;
+	//private JLabel bKontHamarreko;
+	//private JLabel bKontBateko;
 	private JLabel[][] listaGelaxkak;
 	private int zailtasuna;
 	private int errenk;
@@ -107,9 +110,20 @@ public class Dragamina extends JFrame implements Observer {
 			jokatuBotoia.setIcon(new ImageIcon(this.getClass().getResource("cara1.gif")));
 			panelMenu.add(jokatuBotoia);
 			jokatuBotoia.addMouseListener(this.getKontrolatzailea());
+			
+			//bKontEhuneko = new JLabel();
+			//bKontHamarreko = new JLabel();
+			//bKontBateko = new JLabel();
+			//bKontEhuneko.setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("mina-n.gif")));
+			//bKontHamarreko.setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("n-.gif")));
+			//bKontBateko.setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("n-.gif")));
+			//panelMenu.add(bKontEhuneko);
+			//panelMenu.add(bKontHamarreko);
+			//panelMenu.add(bKontBateko);
 		}
 		return panelMenu;
 	}
+
 	
 	private JPanel getPnlMatrizea() {
 		if (pnlMatrizea == null) {
@@ -210,6 +224,19 @@ public class Dragamina extends JFrame implements Observer {
 		}
 	}
 	
+	private void banderaKontEguneratu(){
+		//if (Taula.getTaula().getBanderaKop()>=0){
+			//bKontEhuneko.setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("n"+((Taula.getTaula().getBanderaKop())/100+".gif"))));
+			//bKontHamarreko.setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("n"+((Taula.getTaula().getBanderaKop())%100)/10+".gif")));
+			//bKontBateko.setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("n"+(Taula.getTaula().getBanderaKop())%10+".gif")));
+		//}
+		//else{
+			//bKontEhuneko.setIcon(new ImageIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("mina-n.gif")));
+			//bKontHamarreko.setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("n"+((Taula.getTaula().getBanderaKop())%100)/10+".gif")));
+			//bKontBateko.setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("n"+(Taula.getTaula().getBanderaKop())%10+".gif")));
+		//}		
+	}
+	
 	private Kontrolatzailea getKontrolatzailea() {
 		if (kontrolatzailea == null) {
 			kontrolatzailea = new Kontrolatzailea();
@@ -279,7 +306,7 @@ public class Dragamina extends JFrame implements Observer {
 	public void update(Observable o, Object arg) {
 		this.matrizeaEguneratu();
 		this.aurpegiaEguneratu();
-		//this.banderaKontEguneratu();
+		this.banderaKontEguneratu();
 		//TODO //agian hemen ez da ezer gehiago egin behar
 	}
 
