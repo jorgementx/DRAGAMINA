@@ -1,7 +1,11 @@
 package Bista;
 
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -32,6 +36,7 @@ public class LoginPantalla extends JFrame {
 	public JPanel getContentPane() {
 		JPanel contentPane = new JPanel();
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
+		//contentPane.setLayout(new GridLayout(3,0));
 		contentPane.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
 		
 		JLabel userLabel = new JLabel("Erabiltzaile izena sartu: ");
@@ -68,5 +73,13 @@ public class LoginPantalla extends JFrame {
 		this.setContentPane(getContentPane());
 		this.setIconImage(new ImageIcon(this.getClass().getResource("icono.png")).getImage());
 		this.setVisible(true);
+	}
+	
+	private class okMouseListener extends MouseAdapter {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			ZailtasunPantaila.getZailtasunPantaila().setVisible(false);
+			Dragamina.getDragamina();
+		}
 	}
 }
