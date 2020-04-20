@@ -114,9 +114,9 @@ public class Dragamina extends JFrame implements Observer {
 			bKontEhuneko = new JLabel();
 			bKontHamarreko = new JLabel();
 			bKontBateko = new JLabel();
-			bKontEhuneko.setIcon(new ImageIcon(this.getClass().getResource("n-.gif")));
-			bKontHamarreko.setIcon(new ImageIcon(this.getClass().getResource("n-.gif")));
-			bKontBateko.setIcon(new ImageIcon(this.getClass().getResource("n-.gif")));
+			bKontEhuneko.setIcon(new ImageIcon(this.getClass().getResource("n0.gif")));
+			bKontHamarreko.setIcon(new ImageIcon(this.getClass().getResource("n"+((Taula.getTaula().getBanderaKop())/10+".gif"))));
+			bKontBateko.setIcon(new ImageIcon(this.getClass().getResource("n"+(Taula.getTaula().getBanderaKop())%10+".gif")));
 			panelMenu.add(bKontEhuneko);
 			panelMenu.add(bKontHamarreko);
 			panelMenu.add(bKontBateko);
@@ -232,7 +232,7 @@ public class Dragamina extends JFrame implements Observer {
 		}
 		else{
 			bKontEhuneko.setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("n-.gif")));
-			bKontHamarreko.setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("n"+(-((Taula.getTaula().getBanderaKop())%100)/10)+".gif")));
+			bKontHamarreko.setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("n"+(-((Taula.getTaula().getBanderaKop())%100)/10+".gif"))));
 			bKontBateko.setIcon(new ImageIcon(Dragamina.getDragamina().getClass().getResource("n"+(-(Taula.getTaula().getBanderaKop())%10)+".gif")));
 		}		
 	}
