@@ -47,8 +47,10 @@ public class LoginPantalla extends JFrame {
 				if (izena.isEmpty()) {
 					LoginPantalla.getLoginPantalla();
 				} else {
+					// Orain, jasotako erabiltzaile izena Taula 
+					// klasean gorde Ranking-a kudeatzeko
 					LoginPantalla.getLoginPantalla().dispose();
-					Dragamina.getDragamina();
+					ZailtasunPantaila.getZailtasunPantaila();
 				}
 			}
 		});
