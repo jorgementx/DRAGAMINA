@@ -193,7 +193,8 @@ public class ZailtasunPantaila extends JFrame {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			ZailtasunPantaila.getZailtasunPantaila().setVisible(false); //Lehioa ezkutatzekoa
-			Dragamina.getDragamina();
+			LoginPantalla.getLoginPantalla();
+			//Dragamina.getDragamina();
 		}
 	}
 }
