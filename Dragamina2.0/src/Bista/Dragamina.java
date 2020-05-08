@@ -27,6 +27,7 @@ import Eredua.Irekita;
 import Eredua.Itxita;
 import Eredua.Markatuta;
 import Eredua.MinaGelaxka;
+import Eredua.Rankinga;
 import Eredua.Taula;
 import Eredua.ZenbakidunGelaxka;
 
@@ -237,6 +238,13 @@ public class Dragamina extends JFrame implements Observer {
 		}		
 	}
 	
+	private void bukatutaKudeatu(){
+		if (Taula.getTaula().getIrabazita() || Taula.getTaula().getGalduta()) {
+			Rankinga.getRankinga().RankingaEguneratu();
+			RankingGalderaPantaila.getRankingGalderaPantaila().bistaratu();
+		}	
+	}
+	
 	private Kontrolatzailea getKontrolatzailea() {
 		if (kontrolatzailea == null) {
 			kontrolatzailea = new Kontrolatzailea();
@@ -259,6 +267,7 @@ public class Dragamina extends JFrame implements Observer {
 					//TODO
 				}
 			}
+			else if (Taula.getTaula().getIrabazita() || Taula.getTaula().getGalduta()) {} //Partida bukatu bada ez ditugu gelaxketan egindako klikak kontuan izan nahi
 			else {
 				boolean aurk = false;
 				int x = 0;
@@ -307,6 +316,7 @@ public class Dragamina extends JFrame implements Observer {
 		this.matrizeaEguneratu();
 		this.aurpegiaEguneratu();
 		this.banderaKontEguneratu();
+		this.bukatutaKudeatu();
 		//TODO //agian hemen ez da ezer gehiago egin behar
 	}
 

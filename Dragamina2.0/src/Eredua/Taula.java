@@ -16,6 +16,7 @@ public class Taula extends Observable {
 	private int banderaKop;
 	private boolean galduta;
 	private boolean irabazita;
+	private int puntuazioa;
 	private static Taula nTaula=null;
 	
 	private Taula() {
@@ -24,7 +25,7 @@ public class Taula extends Observable {
 		this.minakJarrita=false;
 		this.galduta=false;
 		this.irabazita=false;
-		this.minaKop=this.gelaxkaMatrizea.length*2;
+		this.minaKop=1;
 		this.banderaKop=this.gelaxkaMatrizea.length*2;
 		this.taulaHasieratu();
 	}
@@ -50,6 +51,10 @@ public class Taula extends Observable {
 	
 	public Gelaxka[][] getGelaxkaMatrizea() {
 		return this.gelaxkaMatrizea;
+	}
+	
+	public int getPuntuazioa(){
+		return this.puntuazioa;
 	}
 	
 	public boolean getGalduta() {
