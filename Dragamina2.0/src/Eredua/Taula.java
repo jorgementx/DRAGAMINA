@@ -25,7 +25,7 @@ public class Taula extends Observable {
 		this.minakJarrita=false;
 		this.galduta=false;
 		this.irabazita=false;
-		this.minaKop=1;
+		this.minaKop=this.gelaxkaMatrizea.length*2;
 		this.banderaKop=this.gelaxkaMatrizea.length*2;
 		this.taulaHasieratu();
 	}

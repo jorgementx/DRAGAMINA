@@ -2,6 +2,8 @@ package Bista;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -15,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import Eredua.Taula;
 
 public class RankingGalderaPantaila extends JDialog {
 
@@ -46,7 +50,7 @@ public class RankingGalderaPantaila extends JDialog {
 	
 	private void initialize() {
 		this.setAlwaysOnTop(true);
-		this.setSize(300, 180); //Leihoaren tamaina
+		this.setSize(400, 120); //Leihoaren tamaina
 		this.setResizable(false); //Leihoaren tamaina aldatu ezin izateko
 		this.setTitle("Dragamina"); //Leihoaren izena finkatu
 		this.setLocationRelativeTo(null); //Leihoa monitorearen erdian pantailaratzeko
@@ -66,16 +70,16 @@ public class RankingGalderaPantaila extends JDialog {
 	private JPanel getPanelTestua() {
 		if (panelTestua == null) {
 			panelTestua = new JPanel();
-			panelTestua.setLayout(new BorderLayout());
-			panelTestua.add(getLblPuntuazioa(), BorderLayout.NORTH);
-			panelTestua.add(getLblGaldera(), BorderLayout.NORTH);
+			panelTestua.setLayout(new FlowLayout());
+			panelTestua.add(getLblPuntuazioa());
+			panelTestua.add(getLblGaldera());
 		}
 		return panelTestua;
 	}
 	private JPanel getPanelBotoiak() {
 		if (panelBotoiak == null) {
 			panelBotoiak = new JPanel();
-			panelBotoiak.setLayout(new BorderLayout());
+			panelBotoiak.setLayout(new FlowLayout());
 			panelBotoiak.add(getBtnBai());
 			panelBotoiak.add(getBtnEz());
 		}
@@ -83,14 +87,14 @@ public class RankingGalderaPantaila extends JDialog {
 	}
 	private JLabel getLblPuntuazioa() {
 		if (lblPuntuazioa == null) {
-			lblPuntuazioa = new JLabel("Aukeratu zailtasun-maila:");
+			lblPuntuazioa = new JLabel("Partida bukatuta. "+Taula.getTaula().getPuntuazioa()+"-ko puntuazioa izan du "+LoginPantalla.getLoginPantalla().getJokIzena()+" jokalariak.");
 			lblPuntuazioa.setHorizontalAlignment(SwingConstants.CENTER);
 		}
 		return lblPuntuazioa;
 	}
 	private JLabel getLblGaldera() {
 		if (lblGaldera == null) {
-			lblGaldera = new JLabel("Aukeratu zailtasun-maila:");
+			lblGaldera = new JLabel("Ranking-a ikusi nahi al duzu?");
 			lblGaldera.setHorizontalAlignment(SwingConstants.CENTER);
 		}
 		return lblGaldera;
@@ -104,7 +108,7 @@ public class RankingGalderaPantaila extends JDialog {
 	}
 	private JButton getBtnEz() {
 		if (btnEz == null) {
-			btnEz = new JButton("nommires");
+			btnEz = new JButton("Ez");
 			btnEz.addMouseListener(new BtnEzMouseListener());
 		}
 		return btnEz;

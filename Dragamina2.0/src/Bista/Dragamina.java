@@ -11,6 +11,7 @@ import java.awt.Insets;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -238,7 +239,7 @@ public class Dragamina extends JFrame implements Observer {
 		}		
 	}
 	
-	private void bukatutaKudeatu(){
+	private void bukatutaKudeatu() throws IOException{
 		if (Taula.getTaula().getIrabazita() || Taula.getTaula().getGalduta()) {
 			Rankinga.getRankinga().RankingaEguneratu();
 			RankingGalderaPantaila.getRankingGalderaPantaila().bistaratu();
@@ -316,7 +317,11 @@ public class Dragamina extends JFrame implements Observer {
 		this.matrizeaEguneratu();
 		this.aurpegiaEguneratu();
 		this.banderaKontEguneratu();
-		this.bukatutaKudeatu();
+		try {
+			this.bukatutaKudeatu();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		//TODO //agian hemen ez da ezer gehiago egin behar
 	}
 

@@ -19,6 +19,7 @@ public class LoginPantalla extends JFrame {
 	private JLabel userLabel = new JLabel("Erabiltzaile izena sartu: ");
 	private JTextField userText = new JTextField();
 	private JButton botoia = new JButton("OK");
+	private String jokIzena;
 	
 	private LoginPantalla() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,6 +31,14 @@ public class LoginPantalla extends JFrame {
 			nLoginPantalla = new LoginPantalla();
 		}
 		return nLoginPantalla;
+	}
+	
+	public String getJokIzena() {
+		return this.jokIzena;
+	}
+	
+	public void setJokIzena(String izena) {
+		this.jokIzena=izena;
 	}
 	
 	public JPanel getContentPane() {
@@ -60,7 +69,7 @@ public class LoginPantalla extends JFrame {
 			if (izena.isEmpty()) {
 				LoginPantalla.getLoginPantalla();
 			} else {
-				//TODO : Jasotako erabiltzaile izena gorde ranking-a egiteko
+				LoginPantalla.getLoginPantalla().setJokIzena(izena);
 				LoginPantalla.getLoginPantalla().dispose();
 				ZailtasunPantaila.getZailtasunPantaila();
 			}
