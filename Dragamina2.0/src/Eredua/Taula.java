@@ -1,6 +1,8 @@
 package Eredua;
 
 import java.util.Observable;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.ImageIcon;
 
@@ -10,6 +12,9 @@ import Bista.ZailtasunPantaila;
 public class Taula extends Observable {
 	
 	private int zailtasuna;
+	private int i;
+	private int j;
+	private int irekitaKop=0;
 	private Gelaxka[][] gelaxkaMatrizea;
 	private boolean minakJarrita;
 	private int minaKop;
@@ -18,6 +23,8 @@ public class Taula extends Observable {
 	private boolean irabazita;
 	private int puntuazioa;
 	private static Taula nTaula=null;
+	private int kont;
+	private Timer timer = null;
 	
 	private Taula() {
 		this.zailtasuna=ZailtasunPantaila.getZailtasunPantaila().getZailtasuna();
@@ -28,6 +35,20 @@ public class Taula extends Observable {
 		this.minaKop=this.gelaxkaMatrizea.length*2;
 		this.banderaKop=this.gelaxkaMatrizea.length*2;
 		this.taulaHasieratu();
+		TimerTask timerTask = new TimerTask() {
+			@Override
+			public void run() {
+				actualizarCont();
+			}		
+		};
+		timer = new Timer();
+		timer.scheduleAtFixedRate(timerTask, 0, 1000);
+	}
+	
+	private void actualizarCont() {
+		if (!(this.galduta || this.irabazita)) {
+			kont++;
+		}
 	}
 	
 	public static Taula getTaula() {
@@ -39,13 +60,19 @@ public class Taula extends Observable {
 	
 	private void taularenTamaina() {
 		if (this.zailtasuna==1) {
-			this.gelaxkaMatrizea=new Gelaxka[7][10];
+			this.i=7;
+			this.j=10;
+			this.gelaxkaMatrizea=new Gelaxka[i][j];
 		}
 		else if (this.zailtasuna==2) {
-			this.gelaxkaMatrizea=new Gelaxka[10][15];
+			this.i=10;
+			this.j=15;
+			this.gelaxkaMatrizea=new Gelaxka[i][j];
 		}
 		else if (this.zailtasuna==3) {
-			this.gelaxkaMatrizea=new Gelaxka[12][25];
+			this.i=12;
+			this.j=25;
+			this.gelaxkaMatrizea=new Gelaxka[i][j];
 		}
 	}
 	
@@ -97,7 +124,9 @@ public class Taula extends Observable {
 			else if (!(this.gelaxkaMatrizea[x][y].getEgoera() instanceof Irekita)) {
 				this.gelaxkaMatrizea[x][y].gelaxkaIreki(); //Dei orokorra gelaxka guztientzat, mota kontuan izan gabe
 				if (this.gelaxkaMatrizea[x][y] instanceof MinaGelaxka) { //Gelaxka Mina motakoa bada
+					this.zenbatIrekita();
 					this.galduta=true;
+					this.puntuazioaKalkulatu();
 				}
 				else { //Gelaxka Mina ez den mota batekoa bada
 					if (this.gelaxkaMatrizea[x][y] instanceof HutsikGelaxka) { //Mina Hutsik motakoa bada
@@ -205,8 +234,33 @@ public class Taula extends Observable {
 		}
 		if (kont==minaKop){
 			irabazita=true;
+			this.puntuazioaKalkulatu();
 		}
 	}
+	
+	public void zenbatIrekita() {
+		for (int zutabe=0; zutabe < gelaxkaMatrizea.length; zutabe++){
+			for (int errenkada=0; errenkada < gelaxkaMatrizea[0].length; errenkada++){
+				if (gelaxkaMatrizea[zutabe][errenkada].getEgoera() instanceof Irekita){
+					this.irekitaKop++;
+				}
+			}
+		}
+	}
+	
+	public void puntuazioaKalkulatu(){
+		if (this.galduta){
+			//int irekitaMax= (this.i*this.j)-this.minaKop;
+			//float ehunekoa=this.irekitaKop/irekitaMax;
+			this.puntuazioa=(this.irekitaKop*10)-this.kont;
+		}
+		else{
+			int irekitaMax=(this.i*this.j)-this.minaKop;
+			this.puntuazioa=(irekitaMax*100)-this.kont;
+		}
+		
+	}
+	
 	
 	private void ipiniBanderak() { //Banderak ipintzeko Mina motako gelaxketan partida irabaztean
 		for (int x=0;x<this.gelaxkaMatrizea.length;x++) {
