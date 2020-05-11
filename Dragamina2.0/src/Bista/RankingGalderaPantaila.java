@@ -117,6 +117,7 @@ public class RankingGalderaPantaila extends JDialog {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			RankingGalderaPantaila.getRankingGalderaPantaila().setVisible(false); //Lehioa ezkutatzekoa
+			nRankingGalderaPantaila=null;
 			RankingPantaila.getRankingPantaila();
 		}
 	}
@@ -124,6 +125,7 @@ public class RankingGalderaPantaila extends JDialog {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			RankingGalderaPantaila.getRankingGalderaPantaila().setVisible(false); //Lehioa ezkutatzekoa
+			nRankingGalderaPantaila=null;
 		}
 	}
 
