@@ -1,10 +1,10 @@
-goizane	265
 g	308
 g	287
 g	306
-josu	248
 josu	268
 ander	368
 josulin	687
 josulin	486
 mikel	275
+lander	327
+egoitz	277

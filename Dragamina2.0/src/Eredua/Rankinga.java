@@ -6,6 +6,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.TreeMap;
 
 import Bista.Dragamina;
 import Bista.LoginPantalla;
@@ -112,6 +116,20 @@ public class Rankinga {
 			kont = kont + 1;
 			zerrenda[kont] = lerroElementuak[1];
 			kont = kont + 1;
+		}
+		Map<String, String> map = new HashMap<>();
+		kont = 0;
+		while (kont<20) {
+			map.put(zerrenda[kont+1], zerrenda[kont]);
+			kont = kont + 2;
+		}
+		Map<String, String> mapOrden = new TreeMap<String, String>(map);
+		kont = 19;
+		for(Map.Entry<String,String> entry : mapOrden.entrySet()) {
+			zerrenda[kont] = entry.getKey();
+			kont = kont - 1;
+			zerrenda[kont] = entry.getValue();
+			kont = kont - 1;
 		}
 		reader.close();
 		return zerrenda;

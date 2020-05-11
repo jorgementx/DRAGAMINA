@@ -49,7 +49,6 @@ public class RankingGalderaPantaila extends JDialog {
 	}
 	
 	private void initialize() {
-		this.setAlwaysOnTop(true);
 		this.setSize(400, 120); //Leihoaren tamaina
 		this.setResizable(false); //Leihoaren tamaina aldatu ezin izateko
 		this.setTitle("Dragamina"); //Leihoaren izena finkatu
