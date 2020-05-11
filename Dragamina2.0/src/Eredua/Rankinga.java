@@ -7,6 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Scanner;
 
 import Bista.Dragamina;
@@ -97,5 +100,32 @@ public class Rankinga {
 			idazle.close();
 		}
 		bitartekaria.delete();
+	}
+	
+	private String[] getRankingaFitxategitik() throws IOException {		
+		File fitxategia;
+		fitxategia = new File("puntuazioak.txt");
+		BufferedReader reader;
+		reader = new BufferedReader(new FileReader(fitxategia));
+		int kont = 0;
+		String[] zerrenda = null;
+		String lerroa;
+		while (reader.readLine() != null) {
+			lerroa = reader.readLine();
+			zerrenda[kont] = lerroa;
+			kont = kont + 1;
+		}
+		reader.close();
+		return zerrenda;
+	}
+	
+	public String[] getZerrenda() {
+		String[] zerrenda = null;
+		try {
+			zerrenda = Rankinga.getRankinga().getRankingaFitxategitik();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return zerrenda;
 	}
 }
