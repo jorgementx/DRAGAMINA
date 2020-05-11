@@ -32,7 +32,7 @@ public class Rankinga {
 		int kont=0;
 		int min=-1;
 		String minIzena="";
-		File fitxategia=new File(this.getClass().getResource("puntuazioak.txt").getFile());
+		File fitxategia=new File("puntuazioak.txt");
 		File bitartekaria=new File("bitartekaria.txt");
 		BufferedReader irakurle=new BufferedReader(new FileReader(fitxategia));
 		BufferedWriter idazle;
