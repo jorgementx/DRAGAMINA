@@ -34,6 +34,10 @@ public class RankingPantaila extends JFrame {
 		return nRankingPantaila;
 	}
 	
+	public void bistaratu() {
+		nRankingPantaila.setVisible(true);
+	}
+	
 	public JPanel getContentPane() {
 		contentPane = new JPanel();
 		contentPane.setLayout(new BorderLayout());
@@ -77,6 +81,7 @@ public class RankingPantaila extends JFrame {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			RankingPantaila.getRankingPantaila().setVisible(false);
+			nRankingPantaila=null;
 		}
 	}
 }

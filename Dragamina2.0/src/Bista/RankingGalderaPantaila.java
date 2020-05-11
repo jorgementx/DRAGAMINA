@@ -117,7 +117,7 @@ public class RankingGalderaPantaila extends JDialog {
 		public void mouseClicked(MouseEvent e) {
 			RankingGalderaPantaila.getRankingGalderaPantaila().setVisible(false); //Lehioa ezkutatzekoa
 			nRankingGalderaPantaila=null;
-			RankingPantaila.getRankingPantaila();
+			RankingPantaila.getRankingPantaila().bistaratu();
 		}
 	}
 	private class BtnEzMouseListener extends MouseAdapter {
