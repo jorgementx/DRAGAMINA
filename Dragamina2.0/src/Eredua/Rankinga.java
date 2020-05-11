@@ -32,7 +32,7 @@ public class Rankinga {
 		int kont=0;
 		int min=-1;
 		String minIzena="";
-		File fitxategia=new File("puntuazioak.txt");
+		File fitxategia=new File(this.getClass().getResource("puntuazioak.txt").getFile());
 		File bitartekaria=new File("bitartekaria.txt");
 		BufferedReader irakurle=new BufferedReader(new FileReader(fitxategia));
 		BufferedWriter idazle;
@@ -40,11 +40,7 @@ public class Rankinga {
 		while((unekoLerroa=irakurle.readLine()) != null) {
 			String[] elementuak=unekoLerroa.split("\t");
 			int puntuazioa=Integer.parseInt(elementuak[1]);
-			if (min==-1) {
-				min=puntuazioa;
-				minIzena=elementuak[0];
-			}
-			else if (puntuazioa<=min) {
+			if (min==-1 || puntuazioa<=min) {
 				min=puntuazioa;
 				minIzena=elementuak[0];
 			}
@@ -103,14 +99,13 @@ public class Rankinga {
 	
 	private String[] getRankingaFitxategitik() throws IOException {		
 		File fitxategia;
-		fitxategia = new File("puntuazioak.txt");
+		fitxategia = new File(this.getClass().getResource("puntuazioak.txt").getPath());
 		BufferedReader reader;
 		reader = new BufferedReader(new FileReader(fitxategia));
 		String[] zerrenda = new String[20];
 		String lerroa;
 		int kont = 0;
-		while (kont<20) {
-			lerroa = reader.readLine();
+		while ((lerroa=reader.readLine()) != null) {
 			String[] lerroElementuak = lerroa.split("\t");
 			zerrenda[kont] = lerroElementuak[0];
 			kont = kont + 1;
@@ -118,13 +113,13 @@ public class Rankinga {
 			kont = kont + 1;
 		}
 		Map<String, String> map = new HashMap<>();
-		kont = 0;
-		while (kont<20) {
-			map.put(zerrenda[kont+1], zerrenda[kont]);
-			kont = kont + 2;
+		int kont2 = 0;
+		while (kont2<kont) {
+			map.put(zerrenda[kont2+1], zerrenda[kont2]);
+			kont2 = kont2 + 2;
 		}
 		Map<String, String> mapOrden = new TreeMap<String, String>(map);
-		kont = 19;
+		kont = kont - 1;
 		for(Map.Entry<String,String> entry : mapOrden.entrySet()) {
 			zerrenda[kont] = entry.getKey();
 			kont = kont - 1;
