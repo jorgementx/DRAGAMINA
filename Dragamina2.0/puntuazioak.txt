@@ -1,10 +1,10 @@
-hola	69
-si	69
-lees	69
-esto	69
-sepas	69
-pienso	69
 goizane	204
 goizane	265
 g	308
 g	287
+g	306
+josu	248
+josu	206
+josu	268
+ander	368
+iker	244

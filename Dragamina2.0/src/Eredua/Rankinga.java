@@ -3,14 +3,9 @@ package Eredua;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
-import java.util.Scanner;
 
 import Bista.Dragamina;
 import Bista.LoginPantalla;
@@ -107,13 +102,11 @@ public class Rankinga {
 		fitxategia = new File("puntuazioak.txt");
 		BufferedReader reader;
 		reader = new BufferedReader(new FileReader(fitxategia));
-		int kont = 0;
-		String[] zerrenda = null;
+		String[] zerrenda = new String[10];
 		String lerroa;
-		while (reader.readLine() != null) {
+		for (int i=0; i<10; i++) {
 			lerroa = reader.readLine();
-			zerrenda[kont] = lerroa;
-			kont = kont + 1;
+			zerrenda[i] = lerroa;
 		}
 		reader.close();
 		return zerrenda;

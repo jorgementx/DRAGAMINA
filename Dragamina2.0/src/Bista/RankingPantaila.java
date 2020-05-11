@@ -37,12 +37,14 @@ public class RankingPantaila extends JFrame {
 	public JPanel getContentPane() {
 		contentPane = new JPanel();
 		contentPane.setLayout(new BorderLayout());
-		rankingLabel = new JLabel("Izena eta puntuazioa:");
+		rankingLabel = new JLabel(" IZENA ETA PUNTUAZIOA:");
 		contentPane.add(rankingLabel, BorderLayout.NORTH);
 		contentPane.add(getZerrendaPanela(), BorderLayout.CENTER);
 		amaituBotoia = new JButton("Amaitu");
 		amaituBotoia.addMouseListener(new AmaituMouseListener());
 		contentPane.add(amaituBotoia, BorderLayout.SOUTH);
+		contentPane.add(new JPanel(), BorderLayout.EAST);
+		contentPane.add(new JPanel(), BorderLayout.WEST);
 		return contentPane;
 	}
 	
@@ -51,17 +53,15 @@ public class RankingPantaila extends JFrame {
 		zerrendaPanela.setLayout(new GridLayout(0,1));
 		String[] zerrenda = Rankinga.getRankinga().getZerrenda();
 		lerroa = null;
-		int kont = 0;
-		while (zerrenda[kont] != null) {
-			lerroa = new JLabel(zerrenda[kont]);
+		for (int i=0; i<10; i++) {
+			lerroa = new JLabel(zerrenda[i]);
 			zerrendaPanela.add(lerroa);
-			kont = kont + 1;
 		}
 		return zerrendaPanela;
 	}
 	
 	private void initialize() {
-		this.setSize(300, 180);
+		this.setSize(400, 400);
 		this.setResizable(false);
 		this.setContentPane(getContentPane());
 		this.setTitle("Ranking");
