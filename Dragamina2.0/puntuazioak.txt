@@ -1,0 +1,5 @@
+naia	64
+naia	36
+naia	155
+naia	116
+naia	406
