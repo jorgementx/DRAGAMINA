@@ -37,7 +37,7 @@ public class RankingPantaila extends JFrame {
 	public JPanel getContentPane() {
 		contentPane = new JPanel();
 		contentPane.setLayout(new BorderLayout());
-		rankingLabel = new JLabel(" IZENA ETA PUNTUAZIOA:");
+		rankingLabel = new JLabel(" Hona hemen jokoaren Ranking zerrenda.");
 		contentPane.add(rankingLabel, BorderLayout.NORTH);
 		contentPane.add(getZerrendaPanela(), BorderLayout.CENTER);
 		amaituBotoia = new JButton("Amaitu");
@@ -50,10 +50,12 @@ public class RankingPantaila extends JFrame {
 	
 	private JPanel getZerrendaPanela() {
 		zerrendaPanela = new JPanel();
-		zerrendaPanela.setLayout(new GridLayout(0,1));
+		zerrendaPanela.setLayout(new GridLayout(0,2));
+		zerrendaPanela.add(new JLabel("IZENA:"));
+		zerrendaPanela.add(new JLabel("PUNTUAZIOA:"));
 		String[] zerrenda = Rankinga.getRankinga().getZerrenda();
 		lerroa = null;
-		for (int i=0; i<10; i++) {
+		for (int i=0; i<20; i++) {
 			lerroa = new JLabel(zerrenda[i]);
 			zerrendaPanela.add(lerroa);
 		}
@@ -64,7 +66,7 @@ public class RankingPantaila extends JFrame {
 		this.setSize(400, 400);
 		this.setResizable(false);
 		this.setContentPane(getContentPane());
-		this.setTitle("Ranking");
+		this.setTitle("Dragamina");
 		this.setLocationRelativeTo(null);	
 		this.setContentPane(getContentPane());
 		this.setIconImage(new ImageIcon(this.getClass().getResource("icono.png")).getImage());

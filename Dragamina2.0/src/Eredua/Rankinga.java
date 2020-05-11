@@ -102,11 +102,16 @@ public class Rankinga {
 		fitxategia = new File("puntuazioak.txt");
 		BufferedReader reader;
 		reader = new BufferedReader(new FileReader(fitxategia));
-		String[] zerrenda = new String[10];
+		String[] zerrenda = new String[20];
 		String lerroa;
-		for (int i=0; i<10; i++) {
+		int kont = 0;
+		while (kont<20) {
 			lerroa = reader.readLine();
-			zerrenda[i] = lerroa;
+			String[] lerroElementuak = lerroa.split("\t");
+			zerrenda[kont] = lerroElementuak[0];
+			kont = kont + 1;
+			zerrenda[kont] = lerroElementuak[1];
+			kont = kont + 1;
 		}
 		reader.close();
 		return zerrenda;

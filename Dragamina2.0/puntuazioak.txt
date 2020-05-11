@@ -5,6 +5,6 @@ g	306
 josu	248
 josu	268
 ander	368
-iker	244
 josulin	687
 josulin	486
+mikel	275
