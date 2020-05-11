@@ -112,16 +112,16 @@ public class Rankinga {
 			zerrenda[kont] = lerroElementuak[1];
 			kont = kont + 1;
 		}
-		Map<String, String> map = new HashMap<>();
+		Map<Integer, String> map = new HashMap<>();
 		int kont2 = 0;
 		while (kont2<kont) {
-			map.put(zerrenda[kont2+1], zerrenda[kont2]);
+			map.put(Integer.parseInt(zerrenda[kont2+1]), zerrenda[kont2]);
 			kont2 = kont2 + 2;
 		}
-		Map<String, String> mapOrden = new TreeMap<String, String>(map);
+		Map<Integer, String> mapOrden = new TreeMap<Integer, String>(map);
 		kont = kont - 1;
-		for(Map.Entry<String,String> entry : mapOrden.entrySet()) {
-			zerrenda[kont] = entry.getKey();
+		for(Map.Entry<Integer,String> entry : mapOrden.entrySet()) {
+			zerrenda[kont] = entry.getKey().toString();
 			kont = kont - 1;
 			zerrenda[kont] = entry.getValue();
 			kont = kont - 1;
