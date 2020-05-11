@@ -156,7 +156,9 @@ public class Taula extends Observable {
 			randomZut=(int)(Math.random()*this.gelaxkaMatrizea.length);
 			randomErrenk=(int)(Math.random()*this.gelaxkaMatrizea[0].length);
 			if (!(this.gelaxkaMatrizea[randomZut][randomErrenk] instanceof MinaGelaxka) && randomZut!=x && randomErrenk!=y) {
+				Egoera egoera=this.gelaxkaMatrizea[randomZut][randomErrenk].getEgoera();
 				this.gelaxkaMatrizea[randomZut][randomErrenk]=GelaxkaFactory.getGelaxkaFactory().createGelaxka("Mina");
+				this.gelaxkaMatrizea[randomZut][randomErrenk].egoeraAldatu(egoera);
 				jartzekoFalta--;
 			}
 		}
@@ -170,7 +172,9 @@ public class Taula extends Observable {
 				if (!(this.gelaxkaMatrizea[x][y] instanceof MinaGelaxka)) {
 					int kopurua=this.ingurukoMinak(x, y);
 					if (kopurua>0) {
+						Egoera egoera=this.gelaxkaMatrizea[x][y].getEgoera();
 						this.gelaxkaMatrizea[x][y]=GelaxkaFactory.getGelaxkaFactory().createGelaxka("Zenbakidun");
+						this.gelaxkaMatrizea[x][y].egoeraAldatu(egoera);
 						((ZenbakidunGelaxka)this.gelaxkaMatrizea[x][y]).setKopurua(kopurua);
 					}
 				}
